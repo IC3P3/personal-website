@@ -1,0 +1,16 @@
+---
+import fs from "node:fs";
+
+const { link, type } = Astro.props;
+const svg = fs.readFileSync(`public/socials/${type}.svg`, "utf-8");
+---
+
+<a
+  href={link}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="rounded-full p-3 items-center stroke-gray-200 transition-colors duration-300 hover:bg-purple-950 hover:stroke-purple-400"
+  aria-label={`${type} logo`}
+>
+  <Fragment set:html={svg} />
+</a>

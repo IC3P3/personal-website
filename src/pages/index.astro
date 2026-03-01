@@ -1,7 +1,12 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro'
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const navContent = {
+  title: "Portfolio",
+  items: [{ link: "/blog", title: "blog" }],
+};
 ---
 
-<BaseLayout title="Niklas Eifler's Website">
-	<h1 class="text-7xl text-purple-900">Niklas Eifler</h1>
+<BaseLayout title="Niklas Eifler's Website" {navContent}>
+  <h1 class="text-7xl text-purple-900">Niklas Eifler</h1>
 </BaseLayout>

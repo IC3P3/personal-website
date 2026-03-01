@@ -1,0 +1,31 @@
+---
+import Social from "../components/Socials.astro";
+
+const { content } = Astro.props;
+---
+
+<nav
+  class="fixed top-3 z-50 max-w-7xl min-w-4xl rounded-4xl bg-transparent text-gray-300 backdrop-blur-lg"
+>
+  <div class="h-navbar mx-auto flex items-center justify-between px-4">
+    <a href="/" class="flex items-center gap-3">
+      <img class="h-12" src="/favicon.svg" />
+      <span class="text-xl font-semibold text-gray-300">{content.title}</span>
+    </a>
+    <div class="flex h-full items-center gap-6">
+      {
+        content.items.map((item) => (
+          <a
+            href={item.link}
+            class="flex h-13 items-center rounded-4xl px-4 font-bold transition-colors duration-200 hover:bg-purple-950 hover:text-purple-400"
+          >
+            {item.title}
+          </a>
+        ))
+      }
+    </div>
+    <div class="flex items-center gap-4">
+      <Social type="github" link="https://github.com/IC3P3" />
+    </div>
+  </div>
+</nav>
