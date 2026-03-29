@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { t } from "../i18n";
+
+const i = t("de");
+
+const navContent = {
+  title: i.nav.title,
+  items: [
+    { link: "/", title: i.nav.startpage },
+    { link: "/#projects", title: i.nav.projects },
+    { link: "/#experience", title: i.nav.experience },
+  ],
+};
+---
+
+<BaseLayout title={`${i.privacy.title} | Niklas Eifler`} {navContent}>
+  <section class="prose prose-gray mx-auto max-w-3xl py-20 dark:prose-invert">
+    <h1>{i.privacy.title}</h1>
+
+    <h2>{i.privacy.responsible}</h2>
+    <p>
+      {i.privacy.responsibleText}
+    </p>
+    <p>
+      Niklas Eifler<br />
+      STRASSE HAUSNUMMER<br />
+      PLZ ORT<br />
+      E-Mail: n.eifler@proton.me
+    </p>
+
+    <h2>{i.privacy.general}</h2>
+    <p>{i.privacy.generalText}</p>
+
+    <h2>{i.privacy.hosting}</h2>
+    <p>{i.privacy.hostingText}</p>
+
+    <h2>{i.privacy.rights}</h2>
+    <p>{i.privacy.rightsText}</p>
+  </section>
+</BaseLayout>
