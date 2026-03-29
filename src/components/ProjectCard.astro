@@ -1,5 +1,6 @@
 ---
 import type { ProjectData } from "../types/project";
+import Social from "./Socials.astro";
 
 interface Props {
   project: ProjectData;
@@ -9,6 +10,8 @@ interface Props {
 
 const { project, viewCode, viewLive } = Astro.props;
 const { title, description, tech, links } = project;
+const hasBothCode = !!(links.github && links.forgejo);
+const singleCodeLink = links.github || links.forgejo;
 ---
 
 <article class="rounded-lg border border-gray-200 bg-white p-6 transition-colors dark:border-white/5 dark:bg-gray-900">
@@ -23,17 +26,29 @@ const { title, description, tech, links } = project;
       ))
     }
   </div>
-  <div class="flex gap-3">
+  <div class="flex items-center gap-3">
     {
-      (links.github || links.forgejo) && (
-        <a
-          href={links.github || links.forgejo}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-800 dark:text-purple-400 dark:hover:text-purple-300"
-        >
-          {viewCode}
-        </a>
+      hasBothCode ? (
+        <div class="group relative">
+          <button class="text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-800 dark:text-purple-400 dark:hover:text-purple-300">
+            {viewCode}
+          </button>
+          <div class="invisible absolute bottom-full left-0 mb-2 flex gap-2 rounded-lg border border-gray-200 bg-white p-2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100 dark:border-white/5 dark:bg-gray-800">
+            <Social type="github" link={links.github!} />
+            <Social type="forgejo" link={links.forgejo!} />
+          </div>
+        </div>
+      ) : (
+        singleCodeLink && (
+          <a
+            href={singleCodeLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-800 dark:text-purple-400 dark:hover:text-purple-300"
+          >
+            {viewCode}
+          </a>
+        )
       )
     }
     {
