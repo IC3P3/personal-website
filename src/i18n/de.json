@@ -2,7 +2,8 @@
   "nav": {
     "title": "{NE}",
     "projects": "Projekte",
-    "experience": "Erfahrung"
+    "experience": "Erfahrung",
+    "startpage": "Startseite"
   },
   "hero": {
     "greeting": "Hallo, ich bin",
@@ -19,6 +20,12 @@
   "footer": {
     "imprint": "Impressum",
     "privacy": "Datenschutz"
+  },
+  "notFound": {
+    "title": "404 | Seite nicht gefunden",
+    "heading": "Seite nicht gefunden",
+    "text": "Die gesuchte Seite existiert leider nicht.",
+    "back": "Zur Startseite"
   },
   "meta": {
     "title": "Niklas Eifler | Softwareentwickler"
