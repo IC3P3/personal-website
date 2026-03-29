@@ -15,8 +15,10 @@ const { title, navContent } = Astro.props;
     <title>{title}</title>
     <script is:inline>
       (function () {
-        var s = localStorage.getItem("theme");
-        var d = s === "dark" || (!s && matchMedia("(prefers-color-scheme:dark)").matches);
+        const s = localStorage.getItem("theme");
+        const d =
+          s === "dark" ||
+          (!s && matchMedia("(prefers-color-scheme:dark)").matches);
         if (d) document.documentElement.classList.add("dark");
       })();
     </script>
