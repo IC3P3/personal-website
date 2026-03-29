@@ -16,6 +16,10 @@
     "website": "Website",
     "releases": "Releases"
   },
+  "footer": {
+    "imprint": "Impressum",
+    "privacy": "Datenschutz"
+  },
   "meta": {
     "title": "Niklas Eifler | Softwareentwickler"
   }

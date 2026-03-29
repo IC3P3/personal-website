@@ -1,8 +1,11 @@
 ---
 import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import { t } from "../i18n";
 
 const { title, navContent } = Astro.props;
+const i = t("de");
 ---
 
 <html lang="de">
@@ -28,5 +31,6 @@ const { title, navContent } = Astro.props;
     <main class="mx-auto w-full max-w-5xl px-6 pt-24">
       <slot />
     </main>
+    <Footer imprintLabel={i.footer.imprint} privacyLabel={i.footer.privacy} />
   </body>
 </html>
