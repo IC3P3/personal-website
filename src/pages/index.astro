@@ -1,31 +1,34 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Social from "../components/Socials.astro";
+import { t } from "../i18n";
+
+const i = t("de");
 
 const navContent = {
-  title: "{NE}",
+  title: i.nav.title,
   items: [
-    { link: "#projekte", title: "Projekte" },
-    { link: "#erfahrung", title: "Erfahrung" },
+    { link: "#projects", title: i.nav.projects },
+    { link: "#experience", title: i.nav.experience },
   ],
 };
 ---
 
-<BaseLayout title="Niklas Eifler | Softwareentwickler" {navContent}>
+<BaseLayout title={i.meta.title} {navContent}>
   <section class="relative flex min-h-[calc(100vh-6rem)] flex-col justify-center py-20">
     <span
       class="pointer-events-none absolute right-0 top-1/2 -z-10 -translate-y-1/2 select-none text-[6rem] font-bold leading-none text-purple-200/30 md:text-[10rem] dark:text-purple-500/10"
       aria-hidden="true"
     >&lt;/&gt;</span>
     <p class="mb-4 text-sm font-medium tracking-widest text-purple-500 uppercase dark:text-purple-400">
-      Hallo, ich bin
+      {i.hero.greeting}
     </p>
     <h1 class="relative mb-4 w-fit text-5xl font-bold md:text-7xl">
       <span class="absolute -inset-4 -z-10 rounded-2xl bg-purple-500/20 blur-3xl dark:bg-purple-500/15"></span>
-      Niklas Eifler
+      {i.hero.name}
     </h1>
     <p class="mb-8 text-2xl font-medium text-gray-500 md:text-3xl dark:text-gray-400">
-      Softwareentwickler
+      {i.hero.role}
     </p>
     <div class="mb-10 flex items-center gap-3">
       <Social type="github" link="https://github.com/IC3P3" />
@@ -35,10 +38,10 @@ const navContent = {
     </div>
     <div class="flex flex-wrap gap-4">
       <a
-        href="#projekte"
+        href="#projects"
         class="rounded-lg bg-purple-600 px-6 py-3 font-medium text-white transition-colors hover:bg-purple-700"
       >
-        Projekte ansehen
+        {i.hero.cta}
       </a>
     </div>
   </section>

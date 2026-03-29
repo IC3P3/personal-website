@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "title": "{NE}",
+    "projects": "Projekte",
+    "experience": "Erfahrung"
+  },
+  "hero": {
+    "greeting": "Hallo, ich bin",
+    "name": "Niklas Eifler",
+    "role": "Softwareentwickler",
+    "cta": "Projekte ansehen"
+  },
+  "meta": {
+    "title": "Niklas Eifler | Softwareentwickler"
+  }
+}
