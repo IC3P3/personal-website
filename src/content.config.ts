@@ -12,6 +12,7 @@ const projects = defineCollection({
       forgejo: z.string().url().optional(),
       live: z.string().url().optional(),
     }),
+    type: z.enum(["web", "app"]).default("web"),
     order: z.number(),
     featured: z.boolean().default(false),
   }),

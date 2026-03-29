@@ -58,8 +58,8 @@ const navContent = {
         projects.map((project) => (
           <ProjectCard
             project={project.data}
-            viewCode={i.projects.viewCode}
-            viewLive={i.projects.viewLive}
+            codeLabel={i.projects.code}
+            liveLabel={project.data.type === "app" ? i.projects.releases : i.projects.website}
           />
         ))
       }

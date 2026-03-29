@@ -7,6 +7,7 @@ export interface ProjectData {
     forgejo?: string;
     live?: string;
   };
+  type: "web" | "app";
   order: number;
   featured: boolean;
 }

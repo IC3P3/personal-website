@@ -4,11 +4,11 @@ import Social from "./Socials.astro";
 
 interface Props {
   project: ProjectData;
-  viewCode: string;
-  viewLive: string;
+  codeLabel: string;
+  liveLabel: string;
 }
 
-const { project, viewCode, viewLive } = Astro.props;
+const { project, codeLabel, liveLabel } = Astro.props;
 const { title, description, tech, links } = project;
 const hasBothCode = !!(links.github && links.forgejo);
 const singleCodeLink = links.github || links.forgejo;
@@ -31,7 +31,7 @@ const singleCodeLink = links.github || links.forgejo;
       hasBothCode ? (
         <div class="group relative">
           <button class="text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-800 dark:text-purple-400 dark:hover:text-purple-300">
-            {viewCode}
+            {codeLabel}
           </button>
           <div class="invisible absolute bottom-full left-0 mb-2 flex gap-2 rounded-lg border border-gray-200 bg-white p-2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100 dark:border-white/5 dark:bg-gray-800">
             <Social type="github" link={links.github!} />
@@ -46,7 +46,7 @@ const singleCodeLink = links.github || links.forgejo;
             rel="noopener noreferrer"
             class="text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-800 dark:text-purple-400 dark:hover:text-purple-300"
           >
-            {viewCode}
+            {codeLabel}
           </a>
         )
       )
@@ -59,7 +59,7 @@ const singleCodeLink = links.github || links.forgejo;
           rel="noopener noreferrer"
           class="text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-800 dark:text-purple-400 dark:hover:text-purple-300"
         >
-          {viewLive}
+          {liveLabel}
         </a>
       )
     }

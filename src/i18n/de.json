@@ -12,8 +12,9 @@
   },
   "projects": {
     "title": "Projekte",
-    "viewCode": "Code ansehen",
-    "viewLive": "Live ansehen"
+    "code": "Quellcode",
+    "website": "Website",
+    "releases": "Releases"
   },
   "meta": {
     "title": "Niklas Eifler | Softwareentwickler"
