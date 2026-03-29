@@ -6,9 +6,9 @@ import { getCollection } from "astro:content";
 import { t } from "../i18n";
 
 const i = t("de");
-const projects = (await getCollection("projects")).sort(
-  (a, b) => a.data.order - b.data.order,
-);
+const projects = (await getCollection("projects"))
+  .filter((p) => p.id.endsWith(".de"))
+  .sort((a, b) => a.data.order - b.data.order);
 
 const navContent = {
   title: i.nav.title,
@@ -20,19 +20,27 @@ const navContent = {
 ---
 
 <BaseLayout title={i.meta.title} {navContent}>
-  <section class="relative flex min-h-[calc(100vh-6rem)] flex-col justify-center py-20">
+  <section
+    class="relative flex min-h-[calc(100vh-6rem)] flex-col justify-center py-20"
+  >
     <span
-      class="pointer-events-none absolute right-0 top-1/2 -z-10 -translate-y-1/2 select-none text-[6rem] font-bold leading-none text-indigo-300/20 md:text-[10rem] dark:text-purple-500/10"
-      aria-hidden="true"
-    >&lt;/&gt;</span>
-    <p class="mb-4 text-sm font-medium tracking-widest text-indigo-600 uppercase dark:text-purple-400">
+      class="pointer-events-none absolute top-1/2 right-0 -z-10 -translate-y-1/2 text-[6rem] leading-none font-bold text-indigo-300/20 select-none md:text-[10rem] dark:text-purple-500/10"
+      aria-hidden="true">&lt;/&gt;</span
+    >
+    <p
+      class="mb-4 text-sm font-medium tracking-widest text-indigo-600 uppercase dark:text-purple-400"
+    >
       {i.hero.greeting}
     </p>
     <h1 class="relative mb-4 w-fit text-5xl font-bold md:text-7xl">
-      <span class="absolute -inset-4 -z-10 rounded-2xl bg-indigo-500/20 blur-3xl dark:bg-purple-500/15"></span>
+      <span
+        class="absolute -inset-4 -z-10 rounded-2xl bg-indigo-500/20 blur-3xl dark:bg-purple-500/15"
+      ></span>
       {i.hero.name}
     </h1>
-    <p class="mb-8 text-2xl font-medium text-gray-500 md:text-3xl dark:text-gray-400">
+    <p
+      class="mb-8 text-2xl font-medium text-gray-500 md:text-3xl dark:text-gray-400"
+    >
       {i.hero.role}
     </p>
     <div class="mb-10 flex items-center gap-3">
@@ -59,7 +67,11 @@ const navContent = {
           <ProjectCard
             project={project.data}
             codeLabel={i.projects.code}
-            liveLabel={project.data.type === "app" ? i.projects.releases : i.projects.website}
+            liveLabel={
+              project.data.type === "app"
+                ? i.projects.releases
+                : i.projects.website
+            }
           />
         ))
       }
