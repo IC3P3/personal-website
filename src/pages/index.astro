@@ -2,11 +2,32 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const navContent = {
-  title: "Portfolio",
-  items: [{ link: "/blog", title: "blog" }],
+  title: "Niklas Eifler",
+  items: [
+    { link: "#projekte", title: "Projekte" },
+    { link: "#erfahrung", title: "Erfahrung" },
+  ],
 };
 ---
 
-<BaseLayout title="Niklas Eifler's Website" {navContent}>
-  <h1 class="text-7xl text-purple-900">Niklas Eifler</h1>
+<BaseLayout title="Niklas Eifler | Softwareentwickler" {navContent}>
+  <section class="flex min-h-[calc(100vh-6rem)] flex-col justify-center py-20">
+    <p class="mb-4 text-sm font-medium tracking-widest text-purple-500 uppercase dark:text-purple-400">
+      Hallo, ich bin
+    </p>
+    <h1 class="mb-4 text-5xl font-bold md:text-7xl">
+      Niklas Eifler
+    </h1>
+    <p class="mb-6 text-2xl font-medium text-gray-500 md:text-3xl dark:text-gray-400">
+      Softwareentwickler
+    </p>
+<div class="flex flex-wrap gap-4">
+      <a
+        href="#projekte"
+        class="rounded-lg bg-purple-600 px-6 py-3 font-medium text-white transition-colors hover:bg-purple-700"
+      >
+        Projekte ansehen
+      </a>
+    </div>
+  </section>
 </BaseLayout>
