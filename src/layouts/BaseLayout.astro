@@ -16,6 +16,8 @@ const { title, navContent } = Astro.props;
   </head>
   <body class="flex justify-center bg-gray-950">
     <Navbar content={navContent} />
-    <slot />
+    <div class="pt-20">
+      <slot />
+    </div>
   </body>
 </html>
