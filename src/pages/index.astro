@@ -7,7 +7,7 @@ import { t } from "../i18n";
 
 const i = t("de");
 const projects = (await getCollection("projects"))
-  .filter((p) => p.id.endsWith(".de"))
+  .filter((p) => p.data.locale === "de")
   .sort((a, b) => a.data.order - b.data.order);
 
 const navContent = {

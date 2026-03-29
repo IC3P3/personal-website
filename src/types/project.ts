@@ -9,5 +9,4 @@ export interface ProjectData {
   };
   type: "web" | "app";
   order: number;
-  featured: boolean;
 }

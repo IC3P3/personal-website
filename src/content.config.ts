@@ -4,6 +4,7 @@ import { glob } from "astro/loaders";
 const projects = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/projects" }),
   schema: z.object({
+    locale: z.string(),
     title: z.string(),
     description: z.string(),
     tech: z.array(z.string()),
@@ -14,7 +15,6 @@ const projects = defineCollection({
     }),
     type: z.enum(["web", "app"]).default("web"),
     order: z.number(),
-    featured: z.boolean().default(false),
   }),
 });
 
