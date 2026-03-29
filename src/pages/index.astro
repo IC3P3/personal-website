@@ -1,9 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Social from "../components/Socials.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { getCollection } from "astro:content";
 import { t } from "../i18n";
 
 const i = t("de");
+const projects = (await getCollection("projects")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
 
 const navContent = {
   title: i.nav.title,
@@ -43,6 +48,21 @@ const navContent = {
       >
         {i.hero.cta}
       </a>
+    </div>
+  </section>
+
+  <section id="projects" class="py-20">
+    <h2 class="mb-10 text-3xl font-bold">{i.projects.title}</h2>
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        projects.map((project) => (
+          <ProjectCard
+            project={project.data}
+            viewCode={i.projects.viewCode}
+            viewLive={i.projects.viewLive}
+          />
+        ))
+      }
     </div>
   </section>
 </BaseLayout>

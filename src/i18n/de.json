@@ -10,6 +10,11 @@
     "role": "Softwareentwickler",
     "cta": "Projekte ansehen"
   },
+  "projects": {
+    "title": "Projekte",
+    "viewCode": "Code ansehen",
+    "viewLive": "Live ansehen"
+  },
   "meta": {
     "title": "Niklas Eifler | Softwareentwickler"
   }
