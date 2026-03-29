@@ -1,3 +1,4 @@
+@import "@fontsource-variable/inter";
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
@@ -5,6 +6,7 @@
 
 @theme {
   --spacing-navbar: 4rem;
+  --font-sans: "Inter Variable", sans-serif;
 }
 
 html {
