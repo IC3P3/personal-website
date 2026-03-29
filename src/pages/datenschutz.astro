@@ -6,16 +6,12 @@ const i = t("de");
 
 const navContent = {
   title: i.nav.title,
-  items: [
-    { link: "/", title: i.nav.startpage },
-    { link: "/#projects", title: i.nav.projects },
-    { link: "/#experience", title: i.nav.experience },
-  ],
+  items: [{ link: "/", title: i.nav.startpage }],
 };
 ---
 
 <BaseLayout title={`${i.privacy.title} | Niklas Eifler`} {navContent}>
-  <section class="prose prose-gray mx-auto max-w-3xl py-20 dark:prose-invert">
+  <section class="prose prose-gray dark:prose-invert mx-auto max-w-3xl py-20">
     <h1>{i.privacy.title}</h1>
 
     <h2>{i.privacy.responsible}</h2>
