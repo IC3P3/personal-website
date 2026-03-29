@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Social from "../components/Socials.astro";
 
 const navContent = {
   title: "{NE}",
@@ -23,10 +24,16 @@ const navContent = {
       <span class="absolute -inset-4 -z-10 rounded-2xl bg-purple-500/20 blur-3xl dark:bg-purple-500/15"></span>
       Niklas Eifler
     </h1>
-    <p class="mb-6 text-2xl font-medium text-gray-500 md:text-3xl dark:text-gray-400">
+    <p class="mb-8 text-2xl font-medium text-gray-500 md:text-3xl dark:text-gray-400">
       Softwareentwickler
     </p>
-<div class="flex flex-wrap gap-4">
+    <div class="mb-10 flex items-center gap-3">
+      <Social type="github" link="https://github.com/IC3P3" />
+      <Social type="linkedin" link="https://www.linkedin.com/in/neifler/" />
+      <Social type="forgejo" link="https://git.eiflerstrom.de" />
+      <Social type="email" link="mailto:n.eifler@proton.me" />
+    </div>
+    <div class="flex flex-wrap gap-4">
       <a
         href="#projekte"
         class="rounded-lg bg-purple-600 px-6 py-3 font-medium text-white transition-colors hover:bg-purple-700"
