@@ -21,7 +21,9 @@
     "title": "Erfahrung",
     "work": "Berufserfahrung",
     "education": "Qualifikationen",
-    "current": "Heute"
+    "current": "Heute",
+    "showMore": "Mehr anzeigen",
+    "showLess": "Weniger anzeigen"
   },
   "footer": {
     "imprint": "Impressum",

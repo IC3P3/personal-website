@@ -28,7 +28,7 @@ const experience = defineCollection({
         location: z.string(),
         start: z.string(),
         end: z.string().optional(),
-        cv: z.array(z.string()).optional(),
+        summary: z.array(z.string()).optional(),
         order: z.number(),
     }),
 });

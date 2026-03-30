@@ -4,11 +4,14 @@ import type { ExperienceData } from "../types/experience";
 interface Props {
     entry: ExperienceData;
     currentLabel: string;
+    showMoreLabel: string;
+    showLessLabel: string;
 }
 
-const { entry, currentLabel } = Astro.props;
-const { title, organization, location, start, end } = entry;
+const { entry, currentLabel, showMoreLabel, showLessLabel } = Astro.props;
+const { title, organization, location, start, end, summary } = entry;
 const timeRange = end ? `${start} - ${end}` : `${start} - ${currentLabel}`;
+const hasDetails = Astro.slots.has("default");
 ---
 
 <div class="relative pb-10 pl-8 last:pb-0">
@@ -25,7 +28,33 @@ const timeRange = end ? `${start} - ${end}` : `${start} - ${currentLabel}`;
     </p>
     <h3 class="text-lg font-semibold">{title}</h3>
     <p class="text-gray-600 dark:text-gray-400">{organization}</p>
-    <div class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-        <slot />
-    </div>
+
+    {
+        summary && (
+            <ul class="timeline-summary mt-2 list-disc pl-5 text-sm text-gray-600 dark:text-gray-400">
+                {summary.map((item) => (
+                    <li>{item}</li>
+                ))}
+            </ul>
+        )
+    }
+
+    {
+        hasDetails && (
+            <>
+                <div class="timeline-details mt-2 hidden text-sm text-gray-600 dark:text-gray-400 [&_ul]:list-disc [&_ul]:pl-5">
+                    <slot />
+                </div>
+                <button
+                    class="timeline-toggle mt-2 text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-800 dark:text-purple-400 dark:hover:text-purple-300"
+                    data-show-more={showMoreLabel}
+                    data-show-less={showLessLabel}
+                >
+                    {showMoreLabel}
+                </button>
+            </>
+        )
+    }
 </div>
+
+<script src="../scripts/timeline-toggle.ts"></script>

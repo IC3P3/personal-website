@@ -7,5 +7,6 @@ export interface ExperienceData {
     start: string;
     end?: string;
     cv?: string[];
+    summary?: string[];
     order: number;
 }
