@@ -2,21 +2,21 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { t } from "../i18n";
 
-const i = t("de");
+const locale = t("de");
 
 const navContent = {
-    title: i.nav.title,
-    items: [{ link: "/", title: i.nav.startpage }],
+    title: locale.nav.title,
+    items: [{ link: "/", title: locale.nav.startpage }],
 };
 ---
 
-<BaseLayout title={`${i.privacy.title} | Niklas Eifler`} {navContent}>
+<BaseLayout title={`${locale.privacy.title} | Niklas Eifler`} {navContent}>
     <section class="prose prose-gray dark:prose-invert mx-auto max-w-3xl py-20">
-        <h1>{i.privacy.title}</h1>
+        <h1>{locale.privacy.title}</h1>
 
-        <h2>{i.privacy.responsible}</h2>
+        <h2>{locale.privacy.responsible}</h2>
         <p>
-            {i.privacy.responsibleText}
+            {locale.privacy.responsibleText}
         </p>
         <p>
             Niklas Eifler<br />
@@ -25,13 +25,13 @@ const navContent = {
             E-Mail: n.eifler@proton.me
         </p>
 
-        <h2>{i.privacy.general}</h2>
-        <p>{i.privacy.generalText}</p>
+        <h2>{locale.privacy.general}</h2>
+        <p>{locale.privacy.generalText}</p>
 
-        <h2>{i.privacy.hosting}</h2>
-        <p>{i.privacy.hostingText}</p>
+        <h2>{locale.privacy.hosting}</h2>
+        <p>{locale.privacy.hostingText}</p>
 
-        <h2>{i.privacy.rights}</h2>
-        <p>{i.privacy.rightsText}</p>
+        <h2>{locale.privacy.rights}</h2>
+        <p>{locale.privacy.rightsText}</p>
     </section>
 </BaseLayout>

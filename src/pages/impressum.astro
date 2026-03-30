@@ -2,49 +2,49 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { t } from "../i18n";
 
-const i = t("de");
+const locale = t("de");
 
 const navContent = {
-    title: i.nav.title,
-    items: [{ link: "/", title: i.nav.startpage }],
+    title: locale.nav.title,
+    items: [{ link: "/", title: locale.nav.startpage }],
 };
 ---
 
-<BaseLayout title={`${i.imprint.title} | Niklas Eifler`} {navContent}>
+<BaseLayout title={`${locale.imprint.title} | Niklas Eifler`} {navContent}>
     <section class="prose prose-gray dark:prose-invert mx-auto max-w-3xl py-20">
-        <h1>{i.imprint.title}</h1>
+        <h1>{locale.imprint.title}</h1>
 
-        <h2>{i.imprint.responsible}</h2>
+        <h2>{locale.imprint.responsible}</h2>
         <p>
             Niklas Eifler<br />
             Im Rottlande 15<br />
             38350 Helmstedt
         </p>
 
-        <h2>{i.imprint.contact}</h2>
+        <h2>{locale.imprint.contact}</h2>
         <p>
-            {i.imprint.phone}: +49 1514 4697737<br />
-            {i.imprint.mail}: n.eifler@proton.me
+            {locale.imprint.phone}: +49 1514 4697737<br />
+            {locale.imprint.mail}: n.eifler@proton.me
         </p>
 
-        <h2>{i.imprint.liable}</h2>
+        <h2>{locale.imprint.liable}</h2>
         <p>
             Niklas Eifler<br />
             Im Rottlande 15<br />
             38350 Helmstedt
         </p>
 
-        <h2>{i.imprint.dispute}</h2>
-        <p>{i.imprint.disputeText}</p>
+        <h2>{locale.imprint.dispute}</h2>
+        <p>{locale.imprint.disputeText}</p>
 
-        <h2>{i.imprint.disclaimer.title}</h2>
-        <h3>{i.imprint.disclaimer.content}</h3>
-        <p>{i.imprint.disclaimer.contentText}</p>
+        <h2>{locale.imprint.disclaimer.title}</h2>
+        <h3>{locale.imprint.disclaimer.content}</h3>
+        <p>{locale.imprint.disclaimer.contentText}</p>
 
-        <h3>{i.imprint.disclaimer.links}</h3>
-        <p>{i.imprint.disclaimer.linksText}</p>
+        <h3>{locale.imprint.disclaimer.links}</h3>
+        <p>{locale.imprint.disclaimer.linksText}</p>
 
-        <h3>{i.imprint.disclaimer.copyright}</h3>
-        <p>{i.imprint.disclaimer.copyrightText}</p>
+        <h3>{locale.imprint.disclaimer.copyright}</h3>
+        <p>{locale.imprint.disclaimer.copyrightText}</p>
     </section>
 </BaseLayout>

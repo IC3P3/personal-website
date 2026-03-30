@@ -5,7 +5,7 @@ import Footer from "../components/Footer.astro";
 import { t } from "../i18n";
 
 const { title, navContent } = Astro.props;
-const i = t("de");
+const locale = t("de");
 ---
 
 <html lang="de">
@@ -18,11 +18,12 @@ const i = t("de");
         <title>{title}</title>
         <script is:inline>
             (function () {
-                const s = localStorage.getItem("theme");
-                const d =
-                    s === "dark" ||
-                    (!s && matchMedia("(prefers-color-scheme:dark)").matches);
-                if (d) document.documentElement.classList.add("dark");
+                const savedTheme = localStorage.getItem("theme");
+                const isDark =
+                    savedTheme === "dark" ||
+                    (!savedTheme &&
+                        matchMedia("(prefers-color-scheme:dark)").matches);
+                if (isDark) document.documentElement.classList.add("dark");
             })();
         </script>
     </head>
@@ -32,9 +33,9 @@ const i = t("de");
             <slot />
         </main>
         <Footer
-            imprintLabel={i.footer.imprint}
-            privacyLabel={i.footer.privacy}
-            lastUpdateLabel={i.footer.lastUpdate}
+            imprintLabel={locale.footer.imprint}
+            privacyLabel={locale.footer.privacy}
+            lastUpdateLabel={locale.footer.lastUpdate}
         />
     </body>
 </html>

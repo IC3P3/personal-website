@@ -6,28 +6,30 @@ import TimelineEntry from "../components/TimelineEntry.astro";
 import { getCollection, render } from "astro:content";
 import { t } from "../i18n";
 
-const i = t("de");
+const locale = t("de");
 const projects = (await getCollection("projects"))
-    .filter((p) => p.data.locale === "de")
-    .sort((a, b) => a.data.order - b.data.order);
+    .filter((project) => project.data.locale === "de")
+    .sort((first, second) => first.data.order - second.data.order);
 
 const allExperience = (await getCollection("experience"))
-    .filter((e) => e.data.locale === "de")
-    .sort((a, b) => a.data.order - b.data.order);
+    .filter((entry) => entry.data.locale === "de")
+    .sort((first, second) => first.data.order - second.data.order);
 
-const work = allExperience.filter((e) => e.data.type === "work");
-const education = allExperience.filter((e) => e.data.type === "education");
+const work = allExperience.filter((entry) => entry.data.type === "work");
+const education = allExperience.filter(
+    (entry) => entry.data.type === "education",
+);
 
 const navContent = {
-    title: i.nav.title,
+    title: locale.nav.title,
     items: [
-        { link: "#projects", title: i.nav.projects },
-        { link: "#experience", title: i.nav.experience },
+        { link: "#projects", title: locale.nav.projects },
+        { link: "#experience", title: locale.nav.experience },
     ],
 };
 ---
 
-<BaseLayout title={i.meta.title} {navContent}>
+<BaseLayout title={locale.meta.title} {navContent}>
     <section
         class="relative flex min-h-[calc(100vh-6rem)] flex-col justify-center py-20"
     >
@@ -38,18 +40,18 @@ const navContent = {
         <p
             class="mb-4 text-sm font-medium tracking-widest text-indigo-600 uppercase dark:text-purple-400"
         >
-            {i.hero.greeting}
+            {locale.hero.greeting}
         </p>
         <h1 class="relative mb-4 w-fit text-5xl font-bold md:text-7xl">
             <span
                 class="absolute -inset-4 -z-10 rounded-2xl bg-indigo-500/20 blur-3xl dark:bg-purple-500/15"
             ></span>
-            {i.hero.name}
+            {locale.hero.name}
         </h1>
         <p
             class="mb-8 text-2xl font-medium text-gray-500 md:text-3xl dark:text-gray-400"
         >
-            {i.hero.role}
+            {locale.hero.role}
         </p>
         <div class="mb-10 flex items-center gap-3">
             <Social type="github" link="https://github.com/IC3P3" />
@@ -65,23 +67,23 @@ const navContent = {
                 href="#projects"
                 class="rounded-lg bg-indigo-600 px-6 py-3 font-medium text-white transition-colors hover:bg-indigo-700 dark:bg-purple-600 dark:hover:bg-purple-700"
             >
-                {i.hero.cta}
+                {locale.hero.cta}
             </a>
         </div>
     </section>
 
     <section id="projects" class="py-20">
-        <h2 class="mb-10 text-3xl font-bold">{i.projects.title}</h2>
+        <h2 class="mb-10 text-3xl font-bold">{locale.projects.title}</h2>
         <div class="flex flex-wrap justify-center gap-6">
             {
                 projects.map((project) => (
                     <ProjectCard
                         project={project.data}
-                        codeLabel={i.projects.code}
+                        codeLabel={locale.projects.code}
                         liveLabel={
                             project.data.type === "app"
-                                ? i.projects.releases
-                                : i.projects.website
+                                ? locale.projects.releases
+                                : locale.projects.website
                         }
                     />
                 ))
@@ -90,20 +92,20 @@ const navContent = {
     </section>
 
     <section id="experience" class="py-20">
-        <h2 class="mb-10 text-3xl font-bold">{i.experience.title}</h2>
+        <h2 class="mb-10 text-3xl font-bold">{locale.experience.title}</h2>
         <div class="grid gap-12 md:grid-cols-2">
             {
                 work.length > 0 && (
                     <div>
                         <h3 class="mb-6 text-xl font-semibold text-indigo-600 dark:text-purple-400">
-                            {i.experience.work}
+                            {locale.experience.work}
                         </h3>
                         {work.map(async (entry) => {
                             const { Content } = await render(entry);
                             return (
                                 <TimelineEntry
                                     entry={entry.data}
-                                    currentLabel={i.experience.current}
+                                    currentLabel={locale.experience.current}
                                 >
                                     <Content />
                                 </TimelineEntry>
@@ -116,14 +118,14 @@ const navContent = {
                 education.length > 0 && (
                     <div>
                         <h3 class="mb-6 text-xl font-semibold text-indigo-600 dark:text-purple-400">
-                            {i.experience.education}
+                            {locale.experience.education}
                         </h3>
                         {education.map(async (entry) => {
                             const { Content } = await render(entry);
                             return (
                                 <TimelineEntry
                                     entry={entry.data}
-                                    currentLabel={i.experience.current}
+                                    currentLabel={locale.experience.current}
                                 >
                                     <Content />
                                 </TimelineEntry>

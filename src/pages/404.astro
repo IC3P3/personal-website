@@ -2,15 +2,15 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { t } from "../i18n";
 
-const i = t("de");
+const locale = t("de");
 
 const navContent = {
-    title: i.nav.title,
-    items: [{ link: "/", title: i.nav.startpage }],
+    title: locale.nav.title,
+    items: [{ link: "/", title: locale.nav.startpage }],
 };
 ---
 
-<BaseLayout title={i.notFound.title} {navContent}>
+<BaseLayout title={locale.notFound.title} {navContent}>
     <section
         class="flex min-h-[calc(100vh-6rem)] flex-col items-center justify-center text-center"
     >
@@ -19,16 +19,16 @@ const navContent = {
             aria-hidden="true">404</span
         >
         <h1 class="mb-4 text-3xl font-bold md:text-5xl">
-            {i.notFound.heading}
+            {locale.notFound.heading}
         </h1>
         <p class="mb-8 text-lg text-gray-500 dark:text-gray-400">
-            {i.notFound.text}
+            {locale.notFound.text}
         </p>
         <a
             href="/"
             class="rounded-lg bg-indigo-600 px-6 py-3 font-medium text-white transition-colors hover:bg-indigo-700 dark:bg-purple-600 dark:hover:bg-purple-700"
         >
-            {i.notFound.back}
+            {locale.notFound.back}
         </a>
     </section>
 </BaseLayout>
