@@ -1,0 +1,9 @@
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      glob: "*.{js,mjs,ts,astro}"
+      run: pnpm eslint {staged_files}
+    format:
+      glob: "*.{js,mjs,ts,astro,json,css,md}"
+      run: pnpm prettier --check {staged_files}
