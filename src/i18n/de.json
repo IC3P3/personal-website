@@ -17,6 +17,12 @@
     "website": "Website",
     "releases": "Releases"
   },
+  "experience": {
+    "title": "Erfahrung",
+    "work": "Berufserfahrung",
+    "education": "Qualifikationen",
+    "current": "Heute"
+  },
   "footer": {
     "imprint": "Impressum",
     "privacy": "Datenschutz"

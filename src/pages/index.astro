@@ -2,13 +2,21 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Social from "../components/Socials.astro";
 import ProjectCard from "../components/ProjectCard.astro";
-import { getCollection } from "astro:content";
+import TimelineEntry from "../components/TimelineEntry.astro";
+import { getCollection, render } from "astro:content";
 import { t } from "../i18n";
 
 const i = t("de");
 const projects = (await getCollection("projects"))
   .filter((p) => p.data.locale === "de")
   .sort((a, b) => a.data.order - b.data.order);
+
+const allExperience = (await getCollection("experience"))
+  .filter((e) => e.data.locale === "de")
+  .sort((a, b) => a.data.order - b.data.order);
+
+const work = allExperience.filter((e) => e.data.type === "work");
+const education = allExperience.filter((e) => e.data.type === "education");
 
 const navContent = {
   title: i.nav.title,
@@ -74,6 +82,46 @@ const navContent = {
             }
           />
         ))
+      }
+    </div>
+  </section>
+
+  <section id="experience" class="py-20">
+    <h2 class="mb-10 text-3xl font-bold">{i.experience.title}</h2>
+    <div class="grid gap-12 md:grid-cols-2">
+      {
+        work.length > 0 && (
+          <div>
+            <h3 class="mb-6 text-xl font-semibold text-indigo-600 dark:text-purple-400">
+              {i.experience.work}
+            </h3>
+            {work.map(async (entry) => {
+              const { Content } = await render(entry);
+              return (
+                <TimelineEntry entry={entry.data} currentLabel={i.experience.current}>
+                  <Content />
+                </TimelineEntry>
+              );
+            })}
+          </div>
+        )
+      }
+      {
+        education.length > 0 && (
+          <div>
+            <h3 class="mb-6 text-xl font-semibold text-indigo-600 dark:text-purple-400">
+              {i.experience.education}
+            </h3>
+            {education.map(async (entry) => {
+              const { Content } = await render(entry);
+              return (
+                <TimelineEntry entry={entry.data} currentLabel={i.experience.current}>
+                  <Content />
+                </TimelineEntry>
+              );
+            })}
+          </div>
+        )
       }
     </div>
   </section>
