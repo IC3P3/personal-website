@@ -1,0 +1,229 @@
+---
+import "@fontsource-variable/inter";
+import { getCollection, render } from "astro:content";
+import { t } from "../i18n";
+
+const locale = t("de");
+
+const allExperience = (await getCollection("experience"))
+    .filter((entry) => entry.data.locale === "de")
+    .sort((first, second) => first.data.order - second.data.order);
+
+const work = allExperience.filter((entry) => entry.data.type === "work");
+const education = allExperience.filter(
+    (entry) => entry.data.type === "education",
+);
+
+const projects = (await getCollection("projects"))
+    .filter((project) => project.data.locale === "de")
+    .sort((first, second) => first.data.order - second.data.order);
+---
+
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>{locale.cv.title} - Niklas Eifler</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: "Inter Variable", sans-serif;
+                color: #1a1a1a;
+                line-height: 1.5;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 2rem;
+            }
+
+            header {
+                margin-bottom: 2rem;
+                border-bottom: 2px solid #1a1a1a;
+                padding-bottom: 1rem;
+            }
+
+            header h1 {
+                font-size: 1.75rem;
+                font-weight: 700;
+            }
+
+            header p {
+                color: #555;
+                margin-top: 0.25rem;
+            }
+
+            .contact {
+                display: flex;
+                gap: 1.5rem;
+                margin-top: 0.5rem;
+                font-size: 0.875rem;
+                color: #555;
+            }
+
+            section {
+                margin-bottom: 1.5rem;
+            }
+
+            section h2 {
+                font-size: 1.125rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 0.25rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .entry {
+                margin-bottom: 0.75rem;
+            }
+
+            .entry-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+            }
+
+            .entry-title {
+                font-weight: 600;
+            }
+
+            .entry-date {
+                font-size: 0.875rem;
+                color: #555;
+                white-space: nowrap;
+            }
+
+            .entry-org {
+                color: #555;
+                font-size: 0.9375rem;
+            }
+
+            .entry-content {
+                font-size: 0.875rem;
+                margin-top: 0.25rem;
+            }
+
+            .entry-content ul {
+                padding-left: 1.25rem;
+            }
+
+            .project {
+                margin-bottom: 0.5rem;
+            }
+
+            .project-title {
+                font-weight: 600;
+            }
+
+            .project-desc {
+                font-size: 0.875rem;
+                color: #555;
+            }
+
+            .project-tech {
+                font-size: 0.8125rem;
+                color: #777;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Niklas Eifler</h1>
+            <p>{locale.hero.role}</p>
+            <div class="contact">
+                <span>n.eifler@proton.me</span>
+                <span>github.com/IC3P3</span>
+                <span>neifler.de</span>
+            </div>
+        </header>
+
+        {
+            work.length > 0 && (
+                <section>
+                    <h2>{locale.cv.experience}</h2>
+                    {work.map(async (entry) => {
+                        const { Content } = await render(entry);
+                        const timeRange = entry.data.end
+                            ? `${entry.data.start} - ${entry.data.end}`
+                            : `${entry.data.start} - ${locale.experience.current}`;
+                        return (
+                            <div class="entry">
+                                <div class="entry-header">
+                                    <span class="entry-title">
+                                        {entry.data.title}
+                                    </span>
+                                    <span class="entry-date">{timeRange}</span>
+                                </div>
+                                <div class="entry-org">
+                                    {entry.data.organization},{" "}
+                                    {entry.data.location}
+                                </div>
+                                <div class="entry-content">
+                                    <Content />
+                                </div>
+                            </div>
+                        );
+                    })}
+                </section>
+            )
+        }
+
+        {
+            education.length > 0 && (
+                <section>
+                    <h2>{locale.cv.education}</h2>
+                    {education.map(async (entry) => {
+                        const { Content } = await render(entry);
+                        const timeRange = entry.data.end
+                            ? `${entry.data.start} - ${entry.data.end}`
+                            : `${entry.data.start} - ${locale.experience.current}`;
+                        return (
+                            <div class="entry">
+                                <div class="entry-header">
+                                    <span class="entry-title">
+                                        {entry.data.title}
+                                    </span>
+                                    <span class="entry-date">{timeRange}</span>
+                                </div>
+                                <div class="entry-org">
+                                    {entry.data.organization},{" "}
+                                    {entry.data.location}
+                                </div>
+                                <div class="entry-content">
+                                    <Content />
+                                </div>
+                            </div>
+                        );
+                    })}
+                </section>
+            )
+        }
+
+        {
+            projects.length > 0 && (
+                <section>
+                    <h2>{locale.cv.projects}</h2>
+                    {projects.map((project) => (
+                        <div class="project">
+                            <span class="project-title">
+                                {project.data.title}
+                            </span>
+                            <span class="project-desc">
+                                {" "}
+                                - {project.data.description}
+                            </span>
+                            <div class="project-tech">
+                                {project.data.tech.join(" · ")}
+                            </div>
+                        </div>
+                    ))}
+                </section>
+            )
+        }
+    </body>
+</html>
