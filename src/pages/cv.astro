@@ -1,6 +1,6 @@
 ---
 import "@fontsource-variable/inter";
-import { getCollection, render } from "astro:content";
+import { getCollection } from "astro:content";
 import { t } from "../i18n";
 
 const locale = t("de");
@@ -13,10 +13,6 @@ const work = allExperience.filter((entry) => entry.data.type === "work");
 const education = allExperience.filter(
     (entry) => entry.data.type === "education",
 );
-
-const projects = (await getCollection("projects"))
-    .filter((project) => project.data.locale === "de")
-    .sort((first, second) => first.data.order - second.data.order);
 ---
 
 <html lang="de">
@@ -34,137 +30,175 @@ const projects = (await getCollection("projects"))
             body {
                 font-family: "Inter Variable", sans-serif;
                 color: #1a1a1a;
-                line-height: 1.5;
+                line-height: 1.6;
                 max-width: 800px;
                 margin: 0 auto;
                 padding: 2rem;
+                font-size: 0.9375rem;
             }
 
-            header {
-                margin-bottom: 2rem;
-                border-bottom: 2px solid #1a1a1a;
-                padding-bottom: 1rem;
-            }
-
-            header h1 {
-                font-size: 1.75rem;
-                font-weight: 700;
-            }
-
-            header p {
-                color: #555;
-                margin-top: 0.25rem;
-            }
-
-            .contact {
+            /* Header */
+            .cv-header {
                 display: flex;
+                align-items: flex-start;
                 gap: 1.5rem;
-                margin-top: 0.5rem;
-                font-size: 0.875rem;
-                color: #555;
+                margin-bottom: 0.5rem;
             }
 
+            .cv-header h1 {
+                font-size: 2rem;
+                font-weight: 700;
+                color: #2b6a8a;
+            }
+
+            .cv-header .accent {
+                display: inline-block;
+                width: 0;
+                height: 0;
+                border-top: 12px solid transparent;
+                border-bottom: 12px solid transparent;
+                border-left: 16px solid #2b6a8a;
+                margin-right: 0.5rem;
+                vertical-align: middle;
+            }
+
+            .cv-photo {
+                width: 120px;
+                height: 150px;
+                object-fit: cover;
+                margin-left: auto;
+                flex-shrink: 0;
+            }
+
+            /* Sections */
             section {
-                margin-bottom: 1.5rem;
+                margin-bottom: 1.25rem;
             }
 
             section h2 {
                 font-size: 1.125rem;
-                font-weight: 700;
-                text-transform: uppercase;
-                letter-spacing: 0.05em;
-                border-bottom: 1px solid #ddd;
+                font-weight: 400;
+                color: #2b6a8a;
+                border-bottom: 2px solid #2b6a8a;
                 padding-bottom: 0.25rem;
                 margin-bottom: 0.75rem;
             }
 
-            .entry {
-                margin-bottom: 0.75rem;
+            /* Two-column rows */
+            .row {
+                display: grid;
+                grid-template-columns: 160px 1fr;
+                gap: 0.25rem 1.5rem;
+                margin-bottom: 0.25rem;
             }
 
-            .entry-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: baseline;
-            }
-
-            .entry-title {
-                font-weight: 600;
-            }
-
-            .entry-date {
+            .row-label {
+                color: #555;
                 font-size: 0.875rem;
-                color: #555;
-                white-space: nowrap;
             }
 
-            .entry-org {
-                color: #555;
+            .row-value {
                 font-size: 0.9375rem;
             }
 
-            .entry-content {
+            /* Experience entries */
+            .entry {
+                display: grid;
+                grid-template-columns: 160px 1fr;
+                gap: 0 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .entry-date {
+                color: #555;
                 font-size: 0.875rem;
+                padding-top: 0.1rem;
+            }
+
+            .entry-content {
+                min-width: 0;
+            }
+
+            .entry-org {
+                font-weight: 700;
+            }
+
+            .entry-title {
+                color: #555;
+                margin-bottom: 0.25rem;
+            }
+
+            .entry-bullets {
+                padding-left: 1.25rem;
                 margin-top: 0.25rem;
             }
 
-            .entry-content ul {
-                padding-left: 1.25rem;
-            }
-
-            .project {
-                margin-bottom: 0.5rem;
-            }
-
-            .project-title {
-                font-weight: 600;
-            }
-
-            .project-desc {
+            .entry-bullets li {
+                margin-bottom: 0.15rem;
                 font-size: 0.875rem;
-                color: #555;
-            }
-
-            .project-tech {
-                font-size: 0.8125rem;
-                color: #777;
             }
         </style>
     </head>
     <body>
-        <header>
-            <h1>Niklas Eifler</h1>
-            <p>{locale.hero.role}</p>
-            <div class="contact">
-                <span>n.eifler@proton.me</span>
-                <span>github.com/IC3P3</span>
-                <span>neifler.de</span>
+        <div class="cv-header">
+            <div>
+                <h1><span class="accent"></span>{locale.cv.title}</h1>
             </div>
-        </header>
+            <img class="cv-photo" src="/photo.jpg" alt="Niklas Eifler" />
+        </div>
+
+        <section>
+            <h2>{locale.cv.personalData}</h2>
+            <div class="row">
+                <span class="row-label">{locale.cv.name}</span>
+                <span class="row-value">Niklas Eifler</span>
+            </div>
+            <div class="row">
+                <span class="row-label">{locale.cv.birthday}</span>
+                <span class="row-value">02.12.2001</span>
+            </div>
+            <div class="row">
+                <span class="row-label">{locale.cv.address}</span>
+                <span class="row-value"
+                    >Im Rottlande 15<br />38350 Helmstedt</span
+                >
+            </div>
+            <div class="row">
+                <span class="row-label">{locale.cv.phone}</span>
+                <span class="row-value">01514 4697737</span>
+            </div>
+            <div class="row">
+                <span class="row-label">{locale.cv.email}</span>
+                <span class="row-value">n.eifler@proton.me</span>
+            </div>
+        </section>
 
         {
             work.length > 0 && (
                 <section>
                     <h2>{locale.cv.experience}</h2>
-                    {work.map(async (entry) => {
-                        const { Content } = await render(entry);
-                        const timeRange = entry.data.end
+                    {work.map((entry) => {
+                        const dateLabel = entry.data.end
                             ? `${entry.data.start} - ${entry.data.end}`
-                            : `${entry.data.start} - ${locale.experience.current}`;
+                            : `${locale.cv.since} ${entry.data.start}`;
                         return (
                             <div class="entry">
-                                <div class="entry-header">
-                                    <span class="entry-title">
-                                        {entry.data.title}
-                                    </span>
-                                    <span class="entry-date">{timeRange}</span>
-                                </div>
-                                <div class="entry-org">
-                                    {entry.data.organization},{" "}
-                                    {entry.data.location}
-                                </div>
+                                <span class="entry-date">{dateLabel}</span>
                                 <div class="entry-content">
-                                    <Content />
+                                    <div class="entry-org">
+                                        {entry.data.organization} in{" "}
+                                        {entry.data.location}
+                                    </div>
+                                    <div class="entry-title">
+                                        {entry.data.title}
+                                    </div>
+                                    {entry.data.cv && (
+                                        <ul class="entry-bullets">
+                                            {entry.data.cv.map((item) => (
+                                                <li>{item}</li>
+                                            ))}
+                                        </ul>
+                                    )}
                                 </div>
                             </div>
                         );
@@ -177,25 +211,28 @@ const projects = (await getCollection("projects"))
             education.length > 0 && (
                 <section>
                     <h2>{locale.cv.education}</h2>
-                    {education.map(async (entry) => {
-                        const { Content } = await render(entry);
-                        const timeRange = entry.data.end
+                    {education.map((entry) => {
+                        const dateLabel = entry.data.end
                             ? `${entry.data.start} - ${entry.data.end}`
-                            : `${entry.data.start} - ${locale.experience.current}`;
+                            : `${locale.cv.since} ${entry.data.start}`;
                         return (
                             <div class="entry">
-                                <div class="entry-header">
-                                    <span class="entry-title">
-                                        {entry.data.title}
-                                    </span>
-                                    <span class="entry-date">{timeRange}</span>
-                                </div>
-                                <div class="entry-org">
-                                    {entry.data.organization},{" "}
-                                    {entry.data.location}
-                                </div>
+                                <span class="entry-date">{dateLabel}</span>
                                 <div class="entry-content">
-                                    <Content />
+                                    <div class="entry-org">
+                                        {entry.data.organization} in{" "}
+                                        {entry.data.location}
+                                    </div>
+                                    <div class="entry-title">
+                                        {entry.data.title}
+                                    </div>
+                                    {entry.data.cv && (
+                                        <ul class="entry-bullets">
+                                            {entry.data.cv.map((item) => (
+                                                <li>{item}</li>
+                                            ))}
+                                        </ul>
+                                    )}
                                 </div>
                             </div>
                         );
@@ -204,26 +241,23 @@ const projects = (await getCollection("projects"))
             )
         }
 
-        {
-            projects.length > 0 && (
-                <section>
-                    <h2>{locale.cv.projects}</h2>
-                    {projects.map((project) => (
-                        <div class="project">
-                            <span class="project-title">
-                                {project.data.title}
-                            </span>
-                            <span class="project-desc">
-                                {" "}
-                                - {project.data.description}
-                            </span>
-                            <div class="project-tech">
-                                {project.data.tech.join(" · ")}
-                            </div>
-                        </div>
-                    ))}
-                </section>
-            )
-        }
+        <section>
+            <h2>{locale.cv.skills}</h2>
+            <div class="row">
+                <span class="row-label">{locale.cv.languages}</span>
+                <span class="row-value">
+                    Deutsch (Muttersprache)<br />
+                    Englisch (fließend)<br />
+                    Französisch (Grundkenntnisse)
+                </span>
+            </div>
+            <div class="row">
+                <span class="row-label">{locale.cv.hobbies}</span>
+                <span class="row-value">
+                    Heimserver-Administration (Docker, Self-Hosting, Reverse
+                    Proxy), Konzertchor
+                </span>
+            </div>
+        </section>
     </body>
 </html>

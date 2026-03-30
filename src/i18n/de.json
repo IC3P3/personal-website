@@ -68,10 +68,18 @@
   },
   "cv": {
     "title": "Lebenslauf",
-    "contact": "Kontakt",
+    "personalData": "Persönliche Daten",
+    "name": "Name",
+    "birthday": "Geburtstag",
+    "address": "Adresse",
+    "phone": "Telefon",
+    "email": "E-Mail",
     "experience": "Berufserfahrung",
     "education": "Qualifikationen",
-    "projects": "Projekte"
+    "skills": "Kenntnisse und Interessen",
+    "languages": "Fremdsprachen",
+    "hobbies": "Hobbys",
+    "since": "Seit"
   },
   "meta": {
     "title": "Niklas Eifler | Softwareentwickler"
