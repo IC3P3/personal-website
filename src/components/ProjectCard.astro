@@ -3,67 +3,73 @@ import type { ProjectData } from "../types/project";
 import Social from "./Socials.astro";
 
 interface Props {
-  project: ProjectData;
-  codeLabel: string;
-  liveLabel: string;
+    project: ProjectData;
+    codeLabel: string;
+    liveLabel: string;
 }
 
 const { project, codeLabel, liveLabel } = Astro.props;
 const { title, description, tech, links } = project;
-const hasBothCode = !!(links.github && links.forgejo);
-const singleCodeLink = links.github || links.forgejo;
+const githubLink = links.github;
+const forgejoLink = links.forgejo;
+const hasBothCode = !!(githubLink && forgejoLink);
+const singleCodeLink = githubLink || forgejoLink;
 ---
 
 <article
-  class="w-full rounded-lg border border-gray-200 bg-white p-6 transition-colors md:w-[calc(50%-0.75rem)] dark:border-white/5 dark:bg-gray-900"
+    class="w-full rounded-lg border border-gray-200 bg-white p-6 transition-colors md:w-[calc(50%-0.75rem)] dark:border-white/5 dark:bg-gray-900"
 >
-  <h3 class="mb-2 text-xl font-semibold">{title}</h3>
-  <p class="mb-4 text-gray-600 dark:text-gray-400">{description}</p>
-  <div class="mb-4 flex flex-wrap gap-2">
-    {
-      tech.map((t) => (
-        <span class="rounded-lg bg-indigo-100 px-2 py-1 text-xs font-medium text-indigo-700 dark:bg-purple-950 dark:text-purple-300">
-          {t}
-        </span>
-      ))
-    }
-  </div>
-  <div class="flex items-center gap-3">
-    {
-      hasBothCode ? (
-        <div class="group relative">
-          <button class="text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-800 dark:text-purple-400 dark:hover:text-purple-300">
-            {codeLabel}
-          </button>
-          <div class="invisible absolute bottom-full left-0 mb-2 flex gap-2 rounded-lg border border-gray-200 bg-white p-2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100 dark:border-white/5 dark:bg-gray-800">
-            <Social type="github" link={links.github!} />
-            <Social type="forgejo" link={links.forgejo!} />
-          </div>
-        </div>
-      ) : (
-        singleCodeLink && (
-          <a
-            href={singleCodeLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-800 dark:text-purple-400 dark:hover:text-purple-300"
-          >
-            {codeLabel}
-          </a>
-        )
-      )
-    }
-    {
-      links.live && (
-        <a
-          href={links.live}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-800 dark:text-purple-400 dark:hover:text-purple-300"
-        >
-          {liveLabel}
-        </a>
-      )
-    }
-  </div>
+    <h3 class="mb-2 text-xl font-semibold">{title}</h3>
+    <p class="mb-4 text-gray-600 dark:text-gray-400">{description}</p>
+    <div class="mb-4 flex flex-wrap gap-2">
+        {
+            tech.map((t) => (
+                <span class="rounded-lg bg-indigo-100 px-2 py-1 text-xs font-medium text-indigo-700 dark:bg-purple-950 dark:text-purple-300">
+                    {t}
+                </span>
+            ))
+        }
+    </div>
+    <div class="flex items-center gap-3">
+        {
+            hasBothCode ? (
+                <div class="group relative">
+                    <button class="text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-800 dark:text-purple-400 dark:hover:text-purple-300">
+                        {codeLabel}
+                    </button>
+                    <div class="invisible absolute bottom-full left-0 mb-2 flex gap-2 rounded-lg border border-gray-200 bg-white p-2 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100 dark:border-white/5 dark:bg-gray-800">
+                        {githubLink && (
+                            <Social type="github" link={githubLink} />
+                        )}
+                        {forgejoLink && (
+                            <Social type="forgejo" link={forgejoLink} />
+                        )}
+                    </div>
+                </div>
+            ) : (
+                singleCodeLink && (
+                    <a
+                        href={singleCodeLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-800 dark:text-purple-400 dark:hover:text-purple-300"
+                    >
+                        {codeLabel}
+                    </a>
+                )
+            )
+        }
+        {
+            links.live && (
+                <a
+                    href={links.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-800 dark:text-purple-400 dark:hover:text-purple-300"
+                >
+                    {liveLabel}
+                </a>
+            )
+        }
+    </div>
 </article>

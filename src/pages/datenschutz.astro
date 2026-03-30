@@ -5,33 +5,33 @@ import { t } from "../i18n";
 const i = t("de");
 
 const navContent = {
-  title: i.nav.title,
-  items: [{ link: "/", title: i.nav.startpage }],
+    title: i.nav.title,
+    items: [{ link: "/", title: i.nav.startpage }],
 };
 ---
 
 <BaseLayout title={`${i.privacy.title} | Niklas Eifler`} {navContent}>
-  <section class="prose prose-gray dark:prose-invert mx-auto max-w-3xl py-20">
-    <h1>{i.privacy.title}</h1>
+    <section class="prose prose-gray dark:prose-invert mx-auto max-w-3xl py-20">
+        <h1>{i.privacy.title}</h1>
 
-    <h2>{i.privacy.responsible}</h2>
-    <p>
-      {i.privacy.responsibleText}
-    </p>
-    <p>
-      Niklas Eifler<br />
-      STRASSE HAUSNUMMER<br />
-      PLZ ORT<br />
-      E-Mail: n.eifler@proton.me
-    </p>
+        <h2>{i.privacy.responsible}</h2>
+        <p>
+            {i.privacy.responsibleText}
+        </p>
+        <p>
+            Niklas Eifler<br />
+            STRASSE HAUSNUMMER<br />
+            PLZ ORT<br />
+            E-Mail: n.eifler@proton.me
+        </p>
 
-    <h2>{i.privacy.general}</h2>
-    <p>{i.privacy.generalText}</p>
+        <h2>{i.privacy.general}</h2>
+        <p>{i.privacy.generalText}</p>
 
-    <h2>{i.privacy.hosting}</h2>
-    <p>{i.privacy.hostingText}</p>
+        <h2>{i.privacy.hosting}</h2>
+        <p>{i.privacy.hostingText}</p>
 
-    <h2>{i.privacy.rights}</h2>
-    <p>{i.privacy.rightsText}</p>
-  </section>
+        <h2>{i.privacy.rights}</h2>
+        <p>{i.privacy.rightsText}</p>
+    </section>
 </BaseLayout>

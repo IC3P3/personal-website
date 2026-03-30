@@ -6,11 +6,11 @@ const svg = fs.readFileSync(`public/socials/${type}.svg`, "utf-8");
 ---
 
 <a
-  href={link}
-  target="_blank"
-  rel="noopener noreferrer"
-  class="items-center rounded-lg p-3 text-gray-500 transition-colors duration-300 hover:bg-indigo-100 hover:text-indigo-700 dark:text-gray-400 dark:hover:bg-purple-950 dark:hover:text-purple-400"
-  aria-label={`${type} logo`}
+    href={link}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="items-center rounded-lg p-3 text-gray-500 transition-colors duration-300 hover:bg-indigo-100 hover:text-indigo-700 dark:text-gray-400 dark:hover:bg-purple-950 dark:hover:text-purple-400"
+    aria-label={`${type} logo`}
 >
-  <Fragment set:html={svg} />
+    <Fragment set:html={svg} />
 </a>

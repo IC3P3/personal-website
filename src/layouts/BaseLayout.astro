@@ -9,28 +9,32 @@ const i = t("de");
 ---
 
 <html lang="de">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <script is:inline>
-      (function () {
-        const s = localStorage.getItem("theme");
-        const d =
-          s === "dark" ||
-          (!s && matchMedia("(prefers-color-scheme:dark)").matches);
-        if (d) document.documentElement.classList.add("dark");
-      })();
-    </script>
-  </head>
-  <body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100">
-    <Navbar content={navContent} />
-    <main class="mx-auto w-full max-w-5xl px-6 pt-24">
-      <slot />
-    </main>
-    <Footer imprintLabel={i.footer.imprint} privacyLabel={i.footer.privacy} lastUpdateLabel={i.footer.lastUpdate} />
-  </body>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+        <script is:inline>
+            (function () {
+                const s = localStorage.getItem("theme");
+                const d =
+                    s === "dark" ||
+                    (!s && matchMedia("(prefers-color-scheme:dark)").matches);
+                if (d) document.documentElement.classList.add("dark");
+            })();
+        </script>
+    </head>
+    <body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100">
+        <Navbar content={navContent} />
+        <main class="mx-auto w-full max-w-5xl px-6 pt-24">
+            <slot />
+        </main>
+        <Footer
+            imprintLabel={i.footer.imprint}
+            privacyLabel={i.footer.privacy}
+            lastUpdateLabel={i.footer.lastUpdate}
+        />
+    </body>
 </html>

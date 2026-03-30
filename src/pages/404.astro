@@ -5,30 +5,30 @@ import { t } from "../i18n";
 const i = t("de");
 
 const navContent = {
-  title: i.nav.title,
-  items: [
-    { link: "/", title: i.nav.startpage },
-  ],
+    title: i.nav.title,
+    items: [{ link: "/", title: i.nav.startpage }],
 };
 ---
 
 <BaseLayout title={i.notFound.title} {navContent}>
-  <section
-    class="flex min-h-[calc(100vh-6rem)] flex-col items-center justify-center text-center"
-  >
-    <span
-      class="mb-4 text-[8rem] leading-none font-bold text-indigo-300/20 md:text-[12rem] dark:text-purple-500/10"
-      aria-hidden="true">404</span
+    <section
+        class="flex min-h-[calc(100vh-6rem)] flex-col items-center justify-center text-center"
     >
-    <h1 class="mb-4 text-3xl font-bold md:text-5xl">{i.notFound.heading}</h1>
-    <p class="mb-8 text-lg text-gray-500 dark:text-gray-400">
-      {i.notFound.text}
-    </p>
-    <a
-      href="/"
-      class="rounded-lg bg-indigo-600 px-6 py-3 font-medium text-white transition-colors hover:bg-indigo-700 dark:bg-purple-600 dark:hover:bg-purple-700"
-    >
-      {i.notFound.back}
-    </a>
-  </section>
+        <span
+            class="mb-4 text-[8rem] leading-none font-bold text-indigo-300/20 md:text-[12rem] dark:text-purple-500/10"
+            aria-hidden="true">404</span
+        >
+        <h1 class="mb-4 text-3xl font-bold md:text-5xl">
+            {i.notFound.heading}
+        </h1>
+        <p class="mb-8 text-lg text-gray-500 dark:text-gray-400">
+            {i.notFound.text}
+        </p>
+        <a
+            href="/"
+            class="rounded-lg bg-indigo-600 px-6 py-3 font-medium text-white transition-colors hover:bg-indigo-700 dark:bg-purple-600 dark:hover:bg-purple-700"
+        >
+            {i.notFound.back}
+        </a>
+    </section>
 </BaseLayout>
