@@ -66,21 +66,6 @@
     "rights": "Ihre Rechte",
     "rightsText": "Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit an die oben genannte Adresse wenden."
   },
-  "cv": {
-    "title": "Lebenslauf",
-    "personalData": "Persönliche Daten",
-    "name": "Name",
-    "birthday": "Geburtstag",
-    "address": "Adresse",
-    "phone": "Telefon",
-    "email": "E-Mail",
-    "experience": "Berufserfahrung",
-    "education": "Qualifikationen",
-    "skills": "Kenntnisse und Interessen",
-    "languages": "Fremdsprachen",
-    "hobbies": "Hobbys",
-    "since": "Seit"
-  },
   "meta": {
     "title": "Niklas Eifler | Softwareentwickler"
   }
