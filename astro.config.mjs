@@ -5,7 +5,6 @@ import svelte from "@astrojs/svelte";
 
 import sitemap from "@astrojs/sitemap";
 
-import robotsTxt from "astro-robots-txt";
 
 import tailwindcss from "@tailwindcss/vite";
 
@@ -15,7 +14,7 @@ export default defineConfig({
     defaultLocale: "de",
     locales: ["de"],
   },
-  integrations: [svelte(), sitemap(), robotsTxt()],
+  integrations: [svelte(), sitemap()],
 
   vite: {
     plugins: [tailwindcss()],
