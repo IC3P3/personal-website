@@ -25,7 +25,8 @@
   },
   "footer": {
     "imprint": "Impressum",
-    "privacy": "Datenschutz"
+    "privacy": "Datenschutz",
+    "lastUpdate": "Letztes Update"
   },
   "notFound": {
     "title": "404 | Seite nicht gefunden",
