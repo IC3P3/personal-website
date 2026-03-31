@@ -6,6 +6,8 @@ import { t } from "../i18n";
 
 const { title, description, navContent } = Astro.props;
 const locale = t("de");
+const umamiUrl = import.meta.env.PUBLIC_UMAMI_URL;
+const umamiId = import.meta.env.PUBLIC_UMAMI_ID;
 const metaDescription = description || locale.meta.description;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL("/og.png", Astro.site);
@@ -47,6 +49,16 @@ const ogImage = new URL("/og.png", Astro.site);
                 if (isDark) document.documentElement.classList.add("dark");
             })();
         </script>
+        {
+            umamiUrl && umamiId && (
+                <script
+                    is:inline
+                    defer
+                    src={umamiUrl}
+                    data-website-id={umamiId}
+                />
+            )
+        }
     </head>
     <body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100">
         <Navbar content={navContent} />
