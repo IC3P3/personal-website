@@ -13,7 +13,7 @@ const projects = (await getCollection("projects"))
 
 const allExperience = (await getCollection("experience"))
     .filter((entry) => entry.data.locale === "de")
-    .sort((first, second) => first.data.order - second.data.order);
+    .sort((first, second) => second.data.order - first.data.order);
 
 const work = allExperience.filter((entry) => entry.data.type === "work");
 const education = allExperience.filter(
@@ -102,14 +102,16 @@ const navContent = {
                         </h3>
                         {work.map(async (entry) => {
                             const { Content } = await render(entry);
+                            const hasBody = Boolean(entry.body?.trim());
                             return (
                                 <TimelineEntry
                                     entry={entry.data}
                                     currentLabel={locale.experience.current}
                                     showMoreLabel={locale.experience.showMore}
                                     showLessLabel={locale.experience.showLess}
+                                    hasDetails={hasBody}
                                 >
-                                    <Content />
+                                    {hasBody && <Content />}
                                 </TimelineEntry>
                             );
                         })}
@@ -124,14 +126,16 @@ const navContent = {
                         </h3>
                         {education.map(async (entry) => {
                             const { Content } = await render(entry);
+                            const hasBody = Boolean(entry.body?.trim());
                             return (
                                 <TimelineEntry
                                     entry={entry.data}
                                     currentLabel={locale.experience.current}
                                     showMoreLabel={locale.experience.showMore}
                                     showLessLabel={locale.experience.showLess}
+                                    hasDetails={hasBody}
                                 >
-                                    <Content />
+                                    {hasBody && <Content />}
                                 </TimelineEntry>
                             );
                         })}

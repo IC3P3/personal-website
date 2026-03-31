@@ -6,12 +6,18 @@ interface Props {
     currentLabel: string;
     showMoreLabel: string;
     showLessLabel: string;
+    hasDetails?: boolean;
 }
 
-const { entry, currentLabel, showMoreLabel, showLessLabel } = Astro.props;
+const {
+    entry,
+    currentLabel,
+    showMoreLabel,
+    showLessLabel,
+    hasDetails = false,
+} = Astro.props;
 const { title, organization, location, start, end, summary } = entry;
 const timeRange = end ? `${start} - ${end}` : `${start} - ${currentLabel}`;
-const hasDetails = Astro.slots.has("default");
 ---
 
 <div class="relative pb-10 pl-8 last:pb-0">
@@ -57,4 +63,6 @@ const hasDetails = Astro.slots.has("default");
     }
 </div>
 
-<script src="../scripts/timeline-toggle.ts"></script>
+<script>
+    import "../scripts/timeline-toggle.ts";
+</script>
