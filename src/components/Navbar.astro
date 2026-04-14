@@ -96,9 +96,11 @@ const { content } = Astro.props;
     if (import.meta.env.DEV && (!btn || !closeBtn || !menu))
         throw new Error("Mobile menu elements not found");
 
+    /* eslint-disable @typescript-eslint/no-non-null-assertion */
     const safeBtn = btn!;
     const safeCloseBtn = closeBtn!;
     const safeMenu = menu!;
+    /* eslint-enable @typescript-eslint/no-non-null-assertion */
 
     function openMenu() {
         safeMenu.classList.remove("invisible", "opacity-0");
