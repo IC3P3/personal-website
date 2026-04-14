@@ -1,6 +1,12 @@
 ---
 import fs from "node:fs";
 
+type SocialType = "github" | "linkedin" | "forgejo" | "email";
+
+interface Props {
+    link: string;
+    type: SocialType;
+}
 const { link, type } = Astro.props;
 const svg = fs.readFileSync(`public/socials/${type}.svg`, "utf-8");
 ---
