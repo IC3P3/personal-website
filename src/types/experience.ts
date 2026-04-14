@@ -6,7 +6,6 @@ export interface ExperienceData {
     location: string;
     start: string;
     end?: string;
-    cv?: string[];
     summary?: string[];
     order: number;
 }
