@@ -93,19 +93,23 @@ const { content } = Astro.props;
     const closeBtn = document.getElementById("mobile-menu-close");
     const menu = document.getElementById("mobile-menu");
 
-    if (!btn || !closeBtn || !menu)
+    if (import.meta.env.DEV && (!btn || !closeBtn || !menu))
         throw new Error("Mobile menu elements not found");
 
+    const safeBtn = btn!;
+    const safeCloseBtn = closeBtn!;
+    const safeMenu = menu!;
+
     function openMenu() {
-        menu.classList.remove("invisible", "opacity-0");
+        safeMenu.classList.remove("invisible", "opacity-0");
     }
 
     function closeMenu() {
-        menu.classList.add("invisible", "opacity-0");
+        safeMenu.classList.add("invisible", "opacity-0");
     }
 
-    btn.addEventListener("click", openMenu);
-    closeBtn.addEventListener("click", closeMenu);
+    safeBtn.addEventListener("click", openMenu);
+    safeCloseBtn.addEventListener("click", closeMenu);
 
     document.querySelectorAll(".mobile-menu-link").forEach((link) => {
         link.addEventListener("click", closeMenu);
