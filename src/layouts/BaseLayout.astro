@@ -70,5 +70,24 @@ const ogImage = new URL("/og.png", Astro.site);
             privacyLabel={locale.footer.privacy}
             lastUpdateLabel={locale.footer.lastUpdate}
         />
+        <script is:inline>
+            const street = atob("SW0gUm90dGxhbmRlIDE1");
+            const city = atob("MzgzNTAgSGVsbXN0ZWR0");
+            const phone = atob("KzQ5IDE1MTQgNDY5NzczNw==");
+            const mail = atob("bi5laWZsZXJAcHJvdG9uLm1l");
+
+            document
+                .querySelectorAll(".contact-street")
+                .forEach((el) => (el.textContent = street));
+            document
+                .querySelectorAll(".contact-city")
+                .forEach((el) => (el.textContent = city));
+            document
+                .querySelectorAll(".contact-phone")
+                .forEach((el) => (el.textContent = phone));
+            document
+                .querySelectorAll(".contact-mail")
+                .forEach((el) => (el.textContent = mail));
+        </script>
     </body>
 </html>
