@@ -8,6 +8,10 @@
     "role": "Softwareentwickler",
     "cta": "Projekte ansehen"
   },
+  "skills": {
+    "title": "Kenntnisse",
+    "learning": "Lehrnend"
+  },
   "projects": {
     "title": "Projekte",
     "code": "Quellcode",

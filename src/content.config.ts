@@ -1,5 +1,21 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 import { glob } from "astro/loaders";
+
+const skills = defineCollection({
+    loader: glob({ pattern: "**/*.md", base: "./src/content/skills" }),
+    schema: z.object({
+        title: z.object({
+            de: z.string(),
+        }),
+        items: z.array(
+            z.object({
+                name: z.string(),
+                level: z.enum(["proficient", "learning", "used"]),
+            }),
+        ),
+    }),
+});
 
 const projects = defineCollection({
     loader: glob({ pattern: "**/*.md", base: "./src/content/projects" }),
@@ -9,9 +25,9 @@ const projects = defineCollection({
         description: z.string(),
         tech: z.array(z.string()),
         links: z.object({
-            github: z.string().url().optional(),
-            forgejo: z.string().url().optional(),
-            live: z.string().url().optional(),
+            github: z.url().optional(),
+            forgejo: z.url().optional(),
+            live: z.url().optional(),
         }),
         type: z.enum(["web", "app"]).default("web"),
     }),
@@ -32,4 +48,4 @@ const experience = defineCollection({
     }),
 });
 
-export const collections = { projects, experience };
+export const collections = { skills, projects, experience };

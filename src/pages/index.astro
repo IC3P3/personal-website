@@ -2,11 +2,14 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Social from "../components/Socials.astro";
 import ProjectCard from "../components/ProjectCard.astro";
+import SkillCard from "../components/SkillCard.astro";
 import TimelineEntry from "../components/TimelineEntry.astro";
 import { getCollection, render } from "astro:content";
 import { t } from "../i18n";
 
 const locale = t("de");
+
+const skills = await getCollection("skills");
 
 const projects = (await getCollection("projects"))
     .filter((project) => project.data.locale === "de")
@@ -71,6 +74,21 @@ const navContent = {
             >
                 {locale.hero.cta}
             </a>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20">
+        <h2 class="mb-10 text-3xl font-bold">{locale.skills.title}</h2>
+        <div class="flex flex-wrap justify-start gap-6">
+            {
+                skills.map((skill) => (
+                    <SkillCard
+                        skill={skill.data}
+                        locale="de"
+                        learningLabel={locale.skills.learning}
+                    />
+                ))
+            }
         </div>
     </section>
 
