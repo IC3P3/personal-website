@@ -14,7 +14,6 @@ const projects = defineCollection({
             live: z.string().url().optional(),
         }),
         type: z.enum(["web", "app"]).default("web"),
-        order: z.number(),
     }),
 });
 
