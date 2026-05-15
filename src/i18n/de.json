@@ -10,7 +10,7 @@
   },
   "skills": {
     "title": "Kenntnisse",
-    "learning": "Lehrnend"
+    "learning": "Lernend"
   },
   "projects": {
     "title": "Projekte",
@@ -45,7 +45,7 @@
     "mail": "E-Mail",
     "liable": "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:",
     "dispute": "Verbraucherstreitbeilegung / Universalschlichtungsstelle",
-    "disputeText": "Ich nehmen nicht an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teil und sind dazu auch nicht verpflichtet.",
+    "disputeText": "Ich nehme nicht an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teil und bin dazu auch nicht verpflichtet.",
     "disclaimer": {
       "title": "Haftungsausschluss:",
       "content": "Haftung für Inhalte",

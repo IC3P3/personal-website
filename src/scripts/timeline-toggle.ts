@@ -2,7 +2,7 @@ document.addEventListener("click", (e) => {
     if (!(e.target instanceof Element)) return;
     const button = e.target.closest(".timeline-toggle");
     if (!button) return;
-    const entry = button.closest(".relative");
+    const entry = button.closest("[data-timeline-entry]");
     if (!entry) return;
 
     const details = entry.querySelector(".timeline-details");

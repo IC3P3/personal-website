@@ -3,6 +3,13 @@ import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import { t } from "../i18n";
+import type { NavContent } from "../types/navbar";
+
+interface Props {
+    title: string;
+    description: string;
+    navContent: NavContent;
+}
 
 const { title, description, navContent } = Astro.props;
 const locale = t("de");

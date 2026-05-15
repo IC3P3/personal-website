@@ -1,15 +1,17 @@
 ---
 import type { CollectionEntry } from "astro:content";
 
+type SkillLocale = keyof CollectionEntry<"skills">["data"]["title"];
+
 interface Props {
     skill: CollectionEntry<"skills">["data"];
-    locale: string;
+    locale: SkillLocale;
     learningLabel: string;
 }
 
 const { skill, locale, learningLabel } = Astro.props;
 
-const title = skill.title[locale as keyof typeof skill.title];
+const title = skill.title[locale];
 ---
 
 <article
