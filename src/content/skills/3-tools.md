@@ -2,7 +2,7 @@
 title:
     de: "Tools"
 items:
-    - { name: "Docker (Compose)", level: "proficient" }
+    - { name: "Docker", level: "proficient" }
     - { name: "Git", level: "proficient" }
     - { name: "GitLab CI/CD", level: "proficient" }
     - { name: "Linux", level: "proficient" }
