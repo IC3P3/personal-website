@@ -6,11 +6,15 @@ const locale = t("de");
 
 const navContent = {
     title: "{NE}",
-    items: [{ link: "/", title: locale.startpage }],
+    items: [{ link: "/", title: locale.nav.startpage }],
 };
 ---
 
-<BaseLayout title={`${locale.imprint.title} | Niklas Eifler`} {navContent}>
+<BaseLayout
+    title={`${locale.imprint.title} | Niklas Eifler`}
+    description={locale.meta.description}
+    {navContent}
+>
     <section class="prose prose-gray dark:prose-invert mx-auto max-w-3xl py-20">
         <h1>{locale.imprint.title}</h1>
 
