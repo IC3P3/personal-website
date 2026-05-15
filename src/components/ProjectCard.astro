@@ -1,9 +1,9 @@
 ---
-import type { ProjectData } from "../types/project";
+import type { CollectionEntry } from "astro:content";
 import Social from "./Socials.astro";
 
 interface Props {
-    project: ProjectData;
+    project: CollectionEntry<"projects">["data"];
     codeLabel: string;
     liveLabel: string;
 }

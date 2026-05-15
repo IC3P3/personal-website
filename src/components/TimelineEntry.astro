@@ -1,8 +1,8 @@
 ---
-import type { ExperienceData } from "../types/experience";
+import type { CollectionEntry } from "astro:content";
 
 interface Props {
-    entry: ExperienceData;
+    entry: CollectionEntry<"experience">["data"];
     currentLabel: string;
     showMoreLabel: string;
     showLessLabel: string;
@@ -26,7 +26,7 @@ const timeRange = end ? `${start} - ${end}` : `${start} - ${currentLabel}`;
     >
     </div>
     <div
-        class="absolute top-4 left-[5px] h-full w-0.5 bg-gray-300 last:hidden dark:bg-white/10"
+        class="absolute top-4 left-1.25 h-full w-0.5 bg-gray-300 last:hidden dark:bg-white/10"
     >
     </div>
     <p class="mb-1 text-sm text-gray-500 dark:text-gray-400">
