@@ -7,9 +7,9 @@ import { getCollection, render } from "astro:content";
 import { t } from "../i18n";
 
 const locale = t("de");
-const projects = (await getCollection("projects"))
-    .filter((project) => project.data.locale === "de")
-    .sort((first, second) => first.data.order - second.data.order);
+const projects = (await getCollection("projects")).filter(
+    (project) => project.data.locale === "de",
+);
 
 const allExperience = (await getCollection("experience"))
     .filter((entry) => entry.data.locale === "de")

@@ -8,5 +8,4 @@ export interface ProjectData {
         live?: string;
     };
     type: "web" | "app";
-    order: number;
 }

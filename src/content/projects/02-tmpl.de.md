@@ -5,5 +5,4 @@ description: CLI-Tool zur schnellen Generierung von Boilerplate-Code. Entstanden
 tech: ["Go", "go-git", "Cobra"]
 links:
     github: https://github.com/IC3P3/tmpl
-order: 2
 ---
