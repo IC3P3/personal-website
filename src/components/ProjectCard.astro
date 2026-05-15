@@ -37,7 +37,7 @@ const singleCodeLink = githubLink || forgejoLink;
                     <summary class="cursor-pointer list-none text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-800 dark:text-purple-400 dark:hover:text-purple-300 [&::-webkit-details-marker]:hidden">
                         {codeLabel}
                     </summary>
-                    <div class="absolute bottom-full left-0 mb-2 flex gap-2 rounded-lg border border-gray-300 bg-white p-2 shadow-lg dark:border-white/5 dark:bg-gray-800">
+                    <div class="absolute top-full left-0 z-10 mt-2 flex gap-2 rounded-lg border border-gray-300 bg-white p-2 shadow-lg dark:border-white/5 dark:bg-gray-800">
                         {githubLink && (
                             <Social type="github" link={githubLink} />
                         )}
@@ -73,3 +73,7 @@ const singleCodeLink = githubLink || forgejoLink;
         }
     </div>
 </article>
+
+<script>
+    import "../scripts/details-outside-close.ts";
+</script>
