@@ -1,8 +1,5 @@
 {
   "nav": {
-    "title": "{NE}",
-    "projects": "Projekte",
-    "experience": "Erfahrung",
     "startpage": "Startseite"
   },
   "hero": {
@@ -14,8 +11,8 @@
   "projects": {
     "title": "Projekte",
     "code": "Quellcode",
-    "website": "Website",
-    "releases": "Releases"
+    "website": "Webseite",
+    "releases": "Veröffentlichungen"
   },
   "experience": {
     "title": "Erfahrung",

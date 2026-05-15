@@ -22,10 +22,11 @@ const education = allExperience.filter(
 );
 
 const navContent = {
-    title: locale.nav.title,
+    title: "{NE}",
     items: [
-        { link: "#projects", title: locale.nav.projects },
-        { link: "#experience", title: locale.nav.experience },
+        { link: "#skills", title: locale.skills.title },
+        { link: "#projects", title: locale.projects.title },
+        { link: "#experience", title: locale.experience.title },
     ],
 };
 ---
@@ -47,7 +48,7 @@ const navContent = {
             <span
                 class="absolute -inset-4 -z-10 rounded-2xl bg-indigo-500/30 blur-3xl dark:bg-purple-500/15"
             ></span>
-            {locale.hero.name}
+            Niklas Eifler
         </h1>
         <p
             class="mb-8 text-2xl font-medium text-gray-500 md:text-3xl dark:text-gray-400"
