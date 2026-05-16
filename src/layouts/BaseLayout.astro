@@ -16,8 +16,11 @@ const locale = t("de");
 const umamiUrl = import.meta.env.PUBLIC_UMAMI_URL;
 const umamiId = import.meta.env.PUBLIC_UMAMI_ID;
 const metaDescription = description || locale.meta.description;
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
-const ogImage = new URL("/og.png", Astro.site);
+const canonicalUrl = new URL(
+    Astro.url.pathname,
+    Astro.site ?? Astro.url.origin,
+);
+const ogImage = new URL("/og.png", Astro.site ?? Astro.url.origin);
 ---
 
 <html lang="de">
