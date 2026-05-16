@@ -1,6 +1,6 @@
 ---
 title: HCSS Website
-description: Zukünftige Website der Helmstedter Chor- und Singschule.
+description: "Neuauflage der Vereinswebsite der Helmstedter Chor- und Singschule. Eigenes minimalistisches CMS, das Vereinsmitgliedern ohne IT-Hintergrund gezielt nur die Bearbeitung der wirklich änderbaren Inhalte erlaubt."
 tech: ["Svelte", "TypeScript", "Drizzle", "Tailwind CSS"]
 repository:
     kind: public

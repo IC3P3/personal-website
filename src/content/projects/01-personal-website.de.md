@@ -1,7 +1,7 @@
 ---
 title: Portfolio Website
-description: Persönliche Portfolio-Website mit Projekten und Erfahrung.
-tech: ["Astro", "TypeScript", "Tailwind CSS"]
+description: "Datengetriebenes Portfolio mit alles Inhalten als typisierte Content Collections mit Zod-Schemas, Mehrsprachigkeit über Inline-i18n im Frontmapper. Deployment via Forgejo CI/CD aus dem eigenen Homelab."
+tech: ["Astro", "TypeScript", "Tailwind CSS", "Zod", "Forgejo CI/CD"]
 repository:
     kind: public
     links:
