@@ -6,7 +6,8 @@
     "greeting": "Hi, I'm",
     "name": "Niklas Eifler",
     "role": "Software Developer",
-    "cta": "View Projects"
+    "cta": "View Projects",
+    "available": "Available from"
   },
   "skills": {
     "title": "Skills",

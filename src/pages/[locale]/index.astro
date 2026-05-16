@@ -6,14 +6,22 @@ import SkillCard from "../../components/SkillCard.astro";
 import TimelineEntry from "../../components/TimelineEntry.astro";
 import { getCollection, render } from "astro:content";
 import { t } from "../../i18n";
-import type { Locale } from "../../types/locale";
+import type { InferGetStaticParamsType } from "astro";
 
 export function getStaticPaths() {
-    return [{ params: { locale: "de" } }, { params: { locale: "en" } }];
+    return [
+        { params: { locale: "de" } },
+        { params: { locale: "en" } },
+    ] as const;
 }
 
-const { locale } = Astro.params as { locale: Locale };
+const { locale } = Astro.params as InferGetStaticParamsType<
+    typeof getStaticPaths
+>;
 const tr = t(locale);
+
+const hero = await getCollection("hero");
+const heroData = hero[0]?.data;
 
 const skills = await getCollection("skills");
 
@@ -64,7 +72,14 @@ const navContent = {
         >
             {tr.hero.role}
         </p>
-        <div class="mb-10 flex items-center gap-3">
+        {
+            heroData && (
+                <p class="mb-8 max-w-xl whitespace-pre-line text-gray-600 dark:text-gray-400">
+                    {heroData.about[locale]}
+                </p>
+            )
+        }
+        <div class="mb-4 flex items-center gap-3">
             <Social type="github" link="https://github.com/IC3P3" />
             <Social
                 type="linkedin"
@@ -73,6 +88,13 @@ const navContent = {
             <Social type="forgejo" link="https://git.eiflerstrom.de" />
             <Social type="email" link="mailto:n.eifler@proton.me" />
         </div>
+        {
+            heroData?.showStatus && heroData.date && (
+                <p class="mb-6 text-sm text-indigo-600 dark:text-purple-400">
+                    {tr.hero.available} {heroData.date}
+                </p>
+            )
+        }
         <div class="flex flex-wrap gap-4">
             <a
                 href="#projects"

@@ -6,7 +6,8 @@
     "greeting": "Hallo, ich bin",
     "name": "Niklas Eifler",
     "role": "Softwareentwickler",
-    "cta": "Projekte ansehen"
+    "cta": "Projekte ansehen",
+    "available": "Verfügbar ab"
   },
   "skills": {
     "title": "Kenntnisse",
