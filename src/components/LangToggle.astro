@@ -1,0 +1,43 @@
+---
+import type { Locale } from "../types/locale";
+
+interface Props {
+    locale: Locale;
+}
+
+const { locale } = Astro.props;
+---
+
+<div class="flex items-center text-sm font-medium">
+    <button
+        data-lang="de"
+        class:list={[
+            "rounded px-1.5 py-1 transition-colors",
+            locale === "de"
+                ? "text-indigo-600 dark:text-purple-400"
+                : "text-gray-400 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-300",
+        ]}
+        aria-label="Deutsch"
+        aria-pressed={locale === "de"}
+    >
+        DE
+    </button>
+    <span class="text-gray-300 dark:text-gray-600" aria-hidden="true">|</span>
+    <button
+        data-lang="en"
+        class:list={[
+            "rounded px-1.5 py-1 transition-colors",
+            locale === "en"
+                ? "text-indigo-600 dark:text-purple-400"
+                : "text-gray-400 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-300",
+        ]}
+        aria-label="English"
+        aria-pressed={locale === "en"}
+    >
+        EN
+    </button>
+</div>
+
+<script>
+    import "../scripts/lang-switch.ts";
+</script>

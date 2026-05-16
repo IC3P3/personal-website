@@ -7,6 +7,7 @@ const skills = defineCollection({
     schema: z.object({
         title: z.object({
             de: z.string(),
+            en: z.string(),
         }),
         items: z.array(
             z.object({

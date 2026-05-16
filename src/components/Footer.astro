@@ -1,13 +1,16 @@
 ---
 import Social from "./Socials.astro";
+import type { Locale } from "../types/locale";
 
 interface Props {
     imprintLabel: string;
     privacyLabel: string;
     lastUpdateLabel: string;
+    locale: Locale;
 }
 
-const { imprintLabel, privacyLabel, lastUpdateLabel } = Astro.props;
+const { imprintLabel, privacyLabel, lastUpdateLabel, locale } = Astro.props;
+const dateLocale = locale === "en" ? "en-GB" : "de-DE";
 ---
 
 <footer class="mt-20 border-t border-gray-200 dark:border-white/5">
@@ -43,7 +46,7 @@ const { imprintLabel, privacyLabel, lastUpdateLabel } = Astro.props;
             <p>&copy; {new Date().getFullYear()} Niklas Eifler</p>
             <p class="text-xs">
                 {lastUpdateLabel}: {
-                    new Date().toLocaleDateString("de-DE", {
+                    new Date().toLocaleDateString(dateLocale, {
                         day: "2-digit",
                         month: "2-digit",
                         year: "numeric",

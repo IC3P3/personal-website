@@ -10,7 +10,10 @@ export default defineConfig({
     site: "https://neifler.de",
     i18n: {
         defaultLocale: "de",
-        locales: ["de"],
+        locales: ["de", "en"],
+        routing: {
+            prefixDefaultLocale: true,
+        },
     },
     integrations: [sitemap()],
 

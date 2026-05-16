@@ -1,0 +1,44 @@
+{
+  "nav": {
+    "startpage": "Home"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "name": "Niklas Eifler",
+    "role": "Software Developer",
+    "cta": "View Projects"
+  },
+  "skills": {
+    "title": "Skills",
+    "learning": "Learning"
+  },
+  "projects": {
+    "title": "Projects",
+    "code": "Source Code",
+    "website": "Website",
+    "releases": "Releases"
+  },
+  "experience": {
+    "title": "Experience",
+    "work": "Work Experience",
+    "education": "Education",
+    "current": "Present",
+    "showMore": "Show more",
+    "showLess": "Show less"
+  },
+  "footer": {
+    "imprint": "Imprint",
+    "privacy": "Privacy Policy",
+    "lastUpdate": "Last Updated"
+  },
+  "notFound": {
+    "title": "404 | Page Not Found",
+    "heading": "Page Not Found",
+    "text": "The page you're looking for doesn't exist.",
+    "back": "Back to Home"
+  },
+  "meta": {
+    "title": "Niklas Eifler | Software Developer",
+    "description": "Portfolio of Niklas Eifler - Software Developer. Projects, experience and more."
+  }
+}

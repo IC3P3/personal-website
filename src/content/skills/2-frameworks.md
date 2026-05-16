@@ -1,6 +1,7 @@
 ---
 title:
     de: "Frameworks"
+    en: "Frameworks"
 items:
     - { name: "SvelteKit", level: "proficient" }
     - { name: "Electron", level: "proficient" }

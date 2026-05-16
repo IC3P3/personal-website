@@ -1,6 +1,7 @@
 ---
 title:
     de: "Programmiersprachen"
+    en: "Programming Languages"
 items:
     - { name: "TypeScript", level: "proficient" }
     - { name: "JavaScript", level: "proficient" }

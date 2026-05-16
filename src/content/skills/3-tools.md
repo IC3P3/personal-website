@@ -1,6 +1,7 @@
 ---
 title:
     de: "Tools"
+    en: "Tools"
 items:
     - { name: "Docker", level: "proficient" }
     - { name: "Git", level: "proficient" }

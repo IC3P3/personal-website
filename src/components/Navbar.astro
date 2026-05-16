@@ -1,11 +1,14 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
+import LangToggle from "./LangToggle.astro";
 import type { NavContent } from "../types/navbar";
+import type { Locale } from "../types/locale";
 
 interface Props {
     content: NavContent;
+    locale: Locale;
 }
-const { content } = Astro.props;
+const { content, locale } = Astro.props;
 ---
 
 <nav
@@ -33,6 +36,7 @@ const { content } = Astro.props;
         </div>
 
         <div class="flex items-center gap-2">
+            <LangToggle {locale} />
             <ThemeToggle />
             <button
                 id="mobile-menu-btn"
