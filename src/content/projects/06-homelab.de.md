@@ -14,5 +14,5 @@ tech:
     ]
 repository:
     kind: closed
-    reason: "Closed Source · private Infrastruktur"
+    reason: "Nicht verfügbar · private Infrastruktur"
 ---
