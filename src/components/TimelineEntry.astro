@@ -4,19 +4,10 @@ import type { CollectionEntry } from "astro:content";
 interface Props {
     entry: CollectionEntry<"experience">["data"];
     currentLabel: string;
-    showMoreLabel: string;
-    showLessLabel: string;
-    hasDetails?: boolean;
 }
 
-const {
-    entry,
-    currentLabel,
-    showMoreLabel,
-    showLessLabel,
-    hasDetails = false,
-} = Astro.props;
-const { title, organization, location, start, end, summary } = entry;
+const { entry, currentLabel } = Astro.props;
+const { title, organization, location, start, end } = entry;
 const timeRange = end ? `${start} - ${end}` : `${start} - ${currentLabel}`;
 ---
 
@@ -35,34 +26,9 @@ const timeRange = end ? `${start} - ${end}` : `${start} - ${currentLabel}`;
     <h3 class="text-lg font-semibold">{title}</h3>
     <p class="text-gray-600 dark:text-gray-400">{organization}</p>
 
-    {
-        summary && (
-            <ul class="timeline-summary mt-2 list-disc pl-5 text-sm text-gray-600 dark:text-gray-400">
-                {summary.map((item) => (
-                    <li>{item}</li>
-                ))}
-            </ul>
-        )
-    }
-
-    {
-        hasDetails && (
-            <>
-                <div class="timeline-details mt-2 hidden text-sm text-gray-600 dark:text-gray-400 [&_ul]:list-disc [&_ul]:pl-5">
-                    <slot />
-                </div>
-                <button
-                    class="timeline-toggle mt-2 text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-800 dark:text-purple-400 dark:hover:text-purple-300"
-                    data-show-more={showMoreLabel}
-                    data-show-less={showLessLabel}
-                >
-                    {showMoreLabel}
-                </button>
-            </>
-        )
-    }
+    <div
+        class="mt-2 text-sm text-gray-600 dark:text-gray-400 [&_ul]:list-disc [&_ul]:pl-5"
+    >
+        <slot />
+    </div>
 </div>
-
-<script>
-    import "../scripts/timeline-toggle.ts";
-</script>

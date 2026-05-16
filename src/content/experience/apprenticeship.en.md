@@ -5,8 +5,6 @@ organization: Physikalisch-Technische Bundesanstalt (PTB)
 location: Braunschweig
 start: "09/2021"
 end: "06/2024"
-summary:
-    - "Final exam grade: good (2.0)"
 order: 2
 ---
 

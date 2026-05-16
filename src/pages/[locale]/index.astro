@@ -129,16 +129,12 @@ const navContent = {
                         </h3>
                         {work.map(async (entry) => {
                             const { Content } = await render(entry);
-                            const hasBody = Boolean(entry.body?.trim());
                             return (
                                 <TimelineEntry
                                     entry={entry.data}
                                     currentLabel={tr.experience.current}
-                                    showMoreLabel={tr.experience.showMore}
-                                    showLessLabel={tr.experience.showLess}
-                                    hasDetails={hasBody}
                                 >
-                                    {hasBody && <Content />}
+                                    <Content />
                                 </TimelineEntry>
                             );
                         })}
@@ -153,16 +149,12 @@ const navContent = {
                         </h3>
                         {education.map(async (entry) => {
                             const { Content } = await render(entry);
-                            const hasBody = Boolean(entry.body?.trim());
                             return (
                                 <TimelineEntry
                                     entry={entry.data}
                                     currentLabel={tr.experience.current}
-                                    showMoreLabel={tr.experience.showMore}
-                                    showLessLabel={tr.experience.showLess}
-                                    hasDetails={hasBody}
                                 >
-                                    {hasBody && <Content />}
+                                    <Content />
                                 </TimelineEntry>
                             );
                         })}
