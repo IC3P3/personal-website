@@ -23,12 +23,21 @@ const projects = defineCollection({
         title: z.string(),
         description: z.string(),
         tech: z.array(z.string()),
-        links: z.object({
-            github: z.url().optional(),
-            forgejo: z.url().optional(),
-            live: z.url().optional(),
-        }),
-        type: z.enum(["web", "app"]).default("web"),
+        repository: z.union([
+            z.object({
+                kind: z.literal("public"),
+                links: z.object({
+                    github: z.url().optional(),
+                    forgejo: z.url().optional(),
+                    live: z.url().optional(),
+                }),
+                type: z.enum(["web", "app"]).default("web"),
+            }),
+            z.object({
+                kind: z.literal("closed"),
+                reason: z.string().optional(),
+            }),
+        ]),
     }),
 });
 

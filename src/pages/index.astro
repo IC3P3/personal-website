@@ -101,7 +101,8 @@ const navContent = {
                         project={project.data}
                         codeLabel={locale.projects.code}
                         liveLabel={
-                            project.data.type === "app"
+                            project.data.repository.kind === "public" &&
+                            project.data.repository.type === "app"
                                 ? locale.projects.releases
                                 : locale.projects.website
                         }

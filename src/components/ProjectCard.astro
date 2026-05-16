@@ -9,15 +9,19 @@ interface Props {
 }
 
 const { project, codeLabel, liveLabel } = Astro.props;
-const { title, description, tech, links } = project;
-const githubLink = links.github;
-const forgejoLink = links.forgejo;
+const { title, description, tech, repository } = project;
+
+const isPublic = repository.kind === "public";
+const githubLink = isPublic ? repository.links.github : undefined;
+const forgejoLink = isPublic ? repository.links.forgejo : undefined;
+const liveLink = isPublic ? repository.links.live : undefined;
+const closedReason = !isPublic ? repository.reason : undefined;
 const hasBothCode = !!(githubLink && forgejoLink);
 const singleCodeLink = githubLink || forgejoLink;
 ---
 
 <article
-    class="w-full rounded-lg border border-gray-200 bg-white p-6 transition-colors md:w-[calc(50%-0.75rem)] dark:border-white/5 dark:bg-gray-900"
+    class="flex w-full flex-col rounded-lg border border-gray-200 bg-white p-6 transition-colors md:w-[calc(50%-0.75rem)] dark:border-white/5 dark:bg-gray-900"
 >
     <h3 class="mb-2 text-xl font-semibold">{title}</h3>
     <p class="mb-4 text-gray-600 dark:text-gray-400">{description}</p>
@@ -30,39 +34,45 @@ const singleCodeLink = githubLink || forgejoLink;
             ))
         }
     </div>
-    <div class="flex items-center gap-3">
+    <div class="mt-auto flex items-center gap-3">
         {
-            hasBothCode ? (
-                <details class="relative">
-                    <summary class="cursor-pointer list-none text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-800 dark:text-purple-400 dark:hover:text-purple-300 [&::-webkit-details-marker]:hidden">
-                        {codeLabel}
-                    </summary>
-                    <div class="absolute top-full left-0 z-10 mt-2 flex gap-2 rounded-lg border border-gray-300 bg-white p-2 shadow-lg dark:border-white/5 dark:bg-gray-800">
-                        {githubLink && (
-                            <Social type="github" link={githubLink} />
-                        )}
-                        {forgejoLink && (
-                            <Social type="forgejo" link={forgejoLink} />
-                        )}
-                    </div>
-                </details>
-            ) : (
-                singleCodeLink && (
-                    <a
-                        href={singleCodeLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-800 dark:text-purple-400 dark:hover:text-purple-300"
-                    >
-                        {codeLabel}
-                    </a>
+            isPublic ? (
+                hasBothCode ? (
+                    <details class="relative">
+                        <summary class="cursor-pointer list-none text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-800 dark:text-purple-400 dark:hover:text-purple-300 [&::-webkit-details-marker]:hidden">
+                            {codeLabel}
+                        </summary>
+                        <div class="absolute top-full left-0 z-10 mt-2 flex gap-2 rounded-lg border border-gray-300 bg-white p-2 shadow-lg dark:border-white/5 dark:bg-gray-800">
+                            {githubLink && (
+                                <Social type="github" link={githubLink} />
+                            )}
+                            {forgejoLink && (
+                                <Social type="forgejo" link={forgejoLink} />
+                            )}
+                        </div>
+                    </details>
+                ) : (
+                    singleCodeLink && (
+                        <a
+                            href={singleCodeLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-800 dark:text-purple-400 dark:hover:text-purple-300"
+                        >
+                            {codeLabel}
+                        </a>
+                    )
                 )
+            ) : (
+                <span class="text-sm text-gray-500 dark:text-gray-400">
+                    {closedReason ?? "Nicht öffentlich"}
+                </span>
             )
         }
         {
-            links.live && (
+            liveLink && (
                 <a
-                    href={links.live}
+                    href={liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     class="text-sm font-medium text-indigo-600 transition-colors hover:text-indigo-800 dark:text-purple-400 dark:hover:text-purple-300"
