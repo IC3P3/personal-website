@@ -7,5 +7,5 @@ items:
     - { name: "GitLab CI/CD", level: "proficient" }
     - { name: "Linux", level: "proficient" }
     - { name: "Mise", level: "proficient" }
-    - { name: "PostgreSQL", level: "learning" }
+    - { name: "PostgreSQL", level: "proficient" }
 ---
