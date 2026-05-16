@@ -6,5 +6,6 @@ repository:
     kind: public
     links:
         forgejo: https://git.eiflerstrom.de/IC3P3/personal-website
+        github: https://github.com/IC3P3/personal-website
         live: https://neifler.de
 ---
