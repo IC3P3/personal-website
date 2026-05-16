@@ -1,5 +1,4 @@
 ---
-locale: de
 type: education
 title: Abitur
 organization: Gymnasium Julianum

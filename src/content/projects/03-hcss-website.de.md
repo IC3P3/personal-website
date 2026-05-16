@@ -1,5 +1,4 @@
 ---
-locale: de
 title: HCSS Website
 description: Zukünftige Website der Helmstedter Chor- und Singschule.
 tech: ["Svelte", "TypeScript", "Drizzle", "Tailwind CSS"]

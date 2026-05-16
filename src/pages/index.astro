@@ -12,11 +12,11 @@ const locale = t("de");
 const skills = await getCollection("skills");
 
 const projects = (await getCollection("projects"))
-    .filter((project) => project.data.locale === "de")
+    .filter((project) => project.id.endsWith("de"))
     .reverse();
 
 const allExperience = (await getCollection("experience"))
-    .filter((entry) => entry.data.locale === "de")
+    .filter((entry) => entry.id.endsWith("de"))
     .sort((first, second) => second.data.order - first.data.order);
 
 const work = allExperience.filter((entry) => entry.data.type === "work");

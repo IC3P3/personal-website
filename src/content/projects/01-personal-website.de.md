@@ -1,5 +1,4 @@
 ---
-locale: de
 title: Portfolio Website
 description: Persönliche Portfolio-Website mit Projekten und Erfahrung.
 tech: ["Astro", "TypeScript", "Tailwind CSS"]

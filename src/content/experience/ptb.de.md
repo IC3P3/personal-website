@@ -1,5 +1,4 @@
 ---
-locale: de
 type: work
 title: Fachinformatiker Anwendungsentwicklung
 organization: Physikalisch-Technische Bundesanstalt (PTB)

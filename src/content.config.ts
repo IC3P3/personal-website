@@ -20,7 +20,6 @@ const skills = defineCollection({
 const projects = defineCollection({
     loader: glob({ pattern: "**/*.md", base: "./src/content/projects" }),
     schema: z.object({
-        locale: z.string(),
         title: z.string(),
         description: z.string(),
         tech: z.array(z.string()),
@@ -36,7 +35,6 @@ const projects = defineCollection({
 const experience = defineCollection({
     loader: glob({ pattern: "**/*.md", base: "./src/content/experience" }),
     schema: z.object({
-        locale: z.string(),
         type: z.enum(["work", "education"]),
         title: z.string(),
         organization: z.string(),

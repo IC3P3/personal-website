@@ -1,5 +1,4 @@
 ---
-locale: de
 type: education
 title: Ausbildung Fachinformatiker Anwendungsentwicklung
 organization: Physikalisch-Technische Bundesanstalt (PTB)
