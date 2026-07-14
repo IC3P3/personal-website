@@ -1,0 +1,10 @@
+---
+interface Props {
+    url: string;
+    id: string;
+}
+
+const { url, id } = Astro.props;
+---
+
+<script is:inline defer src={url} data-website-id={id}></script>

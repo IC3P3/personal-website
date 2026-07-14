@@ -1,4 +1,4 @@
-import type { Locale } from "../types/locale";
+import type { Locale } from "../i18n";
 
 document.addEventListener("click", (e) => {
     if (!(e.target instanceof Element)) return;

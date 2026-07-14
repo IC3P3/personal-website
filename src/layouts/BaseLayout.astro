@@ -3,8 +3,9 @@ import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import { t } from "../i18n";
+import Umami from "../components/Umami.astro";
 import type { NavContent } from "../types/navbar";
-import type { Locale } from "../types/locale";
+import type { Locale } from "../i18n";
 
 interface Props {
     title: string;
@@ -69,16 +70,7 @@ const ogImage = new URL("/og.png", Astro.site ?? Astro.url.origin);
                 if (isDark) document.documentElement.classList.add("dark");
             })();
         </script>
-        {
-            umamiUrl && umamiId && (
-                <script
-                    is:inline
-                    defer
-                    src={umamiUrl}
-                    data-website-id={umamiId}
-                />
-            )
-        }
+        {umamiUrl && umamiId && <Umami url={umamiUrl} id={umamiId} />}
     </head>
     <body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100">
         <Navbar content={navContent} locale={localeProp} />
