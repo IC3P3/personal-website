@@ -7,7 +7,8 @@
     "name": "Niklas Eifler",
     "role": "Software Developer",
     "cta": "View Projects",
-    "available": "Available from"
+    "available": "Available from",
+    "availableNow": "Available"
   },
   "skills": {
     "title": "Skills",

@@ -4,6 +4,7 @@ title: Fachinformatiker Anwendungsentwicklung
 organization: Physikalisch-Technische Bundesanstalt (PTB)
 location: Braunschweig
 start: "06/2024"
+end: "07/2026"
 order: 1
 ---
 

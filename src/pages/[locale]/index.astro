@@ -23,6 +23,17 @@ const tr = t(locale);
 const hero = await getCollection("hero");
 const heroData = hero[0]?.data;
 
+// Availability date is "MM/YYYY"; if that month is before the current month,
+// the person is already available, so drop the "ab {date}" suffix.
+let availableNow = false;
+if (heroData?.date) {
+    const [month, year] = heroData.date.split("/").map(Number);
+    const now = new Date();
+    availableNow =
+        year < now.getFullYear() ||
+        (year === now.getFullYear() && month < now.getMonth() + 1);
+}
+
 const skills = await getCollection("skills");
 
 const projects = (await getCollection("projects"))
@@ -91,7 +102,9 @@ const navContent = {
         {
             heroData?.showStatus && heroData.date && (
                 <p class="mb-6 text-sm text-indigo-600 dark:text-purple-400">
-                    {tr.hero.available} {heroData.date}
+                    {availableNow
+                        ? tr.hero.availableNow
+                        : `${tr.hero.available} ${heroData.date}`}
                 </p>
             )
         }

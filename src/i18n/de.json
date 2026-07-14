@@ -7,7 +7,8 @@
     "name": "Niklas Eifler",
     "role": "Softwareentwickler",
     "cta": "Projekte ansehen",
-    "available": "Verfügbar ab"
+    "available": "Verfügbar ab",
+    "availableNow": "Verfügbar"
   },
   "skills": {
     "title": "Kenntnisse",
